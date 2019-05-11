@@ -1,0 +1,6 @@
+framework module Pods_WidgetDash {
+  umbrella header "Pods-WidgetDash-umbrella.h"
+
+  export *
+  module * { export * }
+}
