@@ -9,9 +9,10 @@
 import UIKit
 
 class Widget3ViewController: WidgetViewController {
+
     let interactor: Widget3Interactor
     lazy var contentView = view as? Widget3View
-    weak var externalDelegate: WidgetExternalDelegate?
+    weak var externalDelegate: WidgetOutcomingHandler?
 
     var state: State {
         didSet(oldState) {
@@ -25,7 +26,11 @@ class Widget3ViewController: WidgetViewController {
         }
     }
 
-    init(interactor: Widget3Interactor, state: State) {
+    init(interactor: Widget3Interactor,
+         state: State,
+         externalDelegate: WidgetOutcomingHandler) {
+
+        self.externalDelegate = externalDelegate
         self.interactor = interactor
         self.state = state
         super.init(nibName: nil, bundle: nil)
@@ -64,14 +69,20 @@ extension Widget3ViewController {
         case display(String)
     }
 }
+
 extension Widget3ViewController: Widget3Delegate {
     func refreshButtonTapped() {
         (externalDelegate as? Widget3ExternalDelegate)?.widget3buttonTapped()
-        print("Button tapped")
     }
 }
 
-// Протокол взаимодействия с внешним миром
-protocol Widget3ExternalDelegate: WidgetExternalDelegate {
+extension Widget3ViewController: Reloadable {
+    func reload() {
+        set(state: .loading)
+    }
+}
+
+protocol Widget3ExternalDelegate: WidgetOutcomingHandler {
     func widget3buttonTapped()
 }
+

@@ -9,15 +9,15 @@
 import UIKit
 
 class Widget1ViewController: WidgetViewController {
-    weak var externalDelegate: WidgetExternalDelegate?
+    weak var externalDelegate: WidgetOutcomingHandler?
+    let widgetSubscriber: WidgetSubscriberProtocol?
     
     let interactor: Widget1Interactor
     lazy var contentView = view as? Widget1View
 
-
     let collectionFlowLayout = Widget1CollectionViewFlowLayout()
     let collectionDataSource = Widget1CollectionDataSource()
-    let actionDelegate = Widget1CollectionDelegate()
+
 
     var state: State {
         didSet(oldState) {
@@ -33,12 +33,12 @@ class Widget1ViewController: WidgetViewController {
 
     init(interactor: Widget1Interactor,
          state: State,
-         externalDelegate: WidgetExternalDelegate) {
+         externalDelegate: WidgetOutcomingHandler,
+         widgetSubscriber: WidgetSubscriberProtocol?) {
         
-        guard let external = externalDelegate as? Widget1ExternalDelegate else {
-            fatalError("You cannot init with this delegate type")
-        }
-        self.externalDelegate = external
+        self.externalDelegate = externalDelegate
+        self.widgetSubscriber = widgetSubscriber
+
         self.interactor = interactor
         self.state = state
         super.init(nibName: nil, bundle: nil)
@@ -48,12 +48,17 @@ class Widget1ViewController: WidgetViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func set(state: State) {
-        self.state = state
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        widgetSubscriber?.subscribe(eventType: .reloadFaces) { [weak self] in
+            self?.set(state: .loading)
+        }
+
+        widgetSubscriber?.subscribe(eventType: .reloadBoth) { [weak self] in
+            self?.set(state: .loading)
+        }
+
         set(state: state)
     }
 
@@ -61,7 +66,11 @@ class Widget1ViewController: WidgetViewController {
         view = Widget1View(
             collectionFlowLayout: collectionFlowLayout,
             collectionDataSource: collectionDataSource,
-            actionDelegate: actionDelegate)
+            actionDelegate: self)
+    }
+
+    func set(state: State) {
+        self.state = state
     }
 
     func fetchData() {
@@ -81,6 +90,18 @@ extension Widget1ViewController {
     }
 }
 
-protocol Widget1ExternalDelegate: WidgetExternalDelegate {
-    func widget1ButtonTapped()
+extension Widget1ViewController: Widget1Delegate {
+    func cellWasTapped(index: Int) {
+        (externalDelegate as? Widget1ExternalDelegate)?.cellWasTapped(index: index)
+    }
+}
+
+extension Widget1ViewController: Reloadable {
+    func reload() {
+        set(state: .loading)
+    }
+}
+
+protocol Widget1ExternalDelegate: WidgetOutcomingHandler {
+    func cellWasTapped(index: Int)
 }

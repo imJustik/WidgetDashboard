@@ -19,7 +19,13 @@ enum WidgetType: String {
 class WidgetFactory {
     let widgetStrings: [String]
     var widgets = [WidgetType]()
-    var externalHandler: WidgetExternalDelegate?
+
+    /// Испольльзуют виджеты для подписки на события
+    var widgetSubscriber: WidgetSubscriberProtocol?
+
+    /// Обрабатывает события, пришедшие из виджета
+    var widgetOutcommingHandler: WidgetOutcomingHandler?
+
 
     init(widgetStrings: [String]) {
         self.widgetStrings = widgetStrings
@@ -30,21 +36,25 @@ class WidgetFactory {
             switch WidgetType.init(rawValue: $0)! {
             case .widget1:
                 guard
-                    let widget1Delegate = externalHandler as? Widget1ExternalDelegate
+                    let widget1Delegate = widgetOutcommingHandler as? Widget1ExternalDelegate
                 else {  fatalError("Dashboard does not confirm this protocol") }
 
                 let builder = Widget1Builder()
-                return builder.build(externalDelegate: widget1Delegate)
+                return builder.build(
+                    externalDelegate: widget1Delegate,
+                    widgetSubscriber: widgetSubscriber)
             case .widget2:
                 guard
-                    let widget2Delegate = externalHandler as? Widget2ExternalDelegate
+                    let widget2Delegate = widgetOutcommingHandler as? Widget2ExternalDelegate
                 else { fatalError("Dashboard does not confirm this protocol") }
 
                 let builder = Widget2Builder()
-                return builder.build(externalDelegate: widget2Delegate)
+                return builder.build(
+                    externalDelegate: widget2Delegate,
+                    widgetSubscriber: widgetSubscriber)
             case .widget3:
                 guard
-                    let widget3Delegate = externalHandler as? Widget3ExternalDelegate
+                    let widget3Delegate = widgetOutcommingHandler as? Widget3ExternalDelegate
                 else { fatalError("Dashboard does not confirm this protocol") }
 
                 let builder = Widget3Builder()

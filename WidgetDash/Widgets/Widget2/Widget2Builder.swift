@@ -9,13 +9,16 @@
 import Foundation
 
 class Widget2Builder {
-    func build(externalDelegate: Widget2ExternalDelegate) -> Widget2ViewController {
+    func build(
+        externalDelegate: Widget2ExternalDelegate,
+        widgetSubscriber: WidgetSubscriberProtocol?) -> Widget2ViewController {
         let presenter = Widget2Presenter()
         let interactor = Widget2Interactor(presenter: presenter)
         let controller = Widget2ViewController(
             interactor: interactor,
             state: .loading,
-            externalDelegate: externalDelegate)
+            externalDelegate: externalDelegate,
+            widgetSubscriber: widgetSubscriber)
         presenter.viewController = controller
         return controller
     }

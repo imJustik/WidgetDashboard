@@ -6,20 +6,17 @@ import UIKit
 
 class Dashboard: UIViewController {
     let interactor: DashboardInteractor
-
-   lazy var contentView = DashboardView ()
+    let widgetActionHandler: WidgetIncomingHandler?
+    lazy var contentView = DashboardView ()
 
     var state: State {
         didSet(oldState) {
             switch (oldState, state) {
             case (_, .initial):
-                print("set widgets")
                 createWidgets()
             case let (_, .displayWidgets(widgets)):
-                print("display \(widgets.count) widgets")
                 for var widget in widgets {
                     guard let widgetViewController = widget as? WidgetViewController else { return }
-                    //                    let container = WidgetContainerViewController(widget: widgetViewController)
                     addChild(widgetViewController)
                     widget.externalDelegate = self
                     contentView.stackView.addArrangedSubview(widgetViewController.view)
@@ -30,7 +27,10 @@ class Dashboard: UIViewController {
     }
 
 
-    init(interactor: DashboardInteractor, state: State) {
+    init(interactor: DashboardInteractor,
+         state: State,
+         widgetActionHandler: WidgetIncomingHandler) {
+        self.widgetActionHandler = widgetActionHandler
         self.interactor = interactor
         self.state = state
         super.init(nibName: nil, bundle: nil)
@@ -50,7 +50,6 @@ class Dashboard: UIViewController {
     }
 
     func createWidgets() {
-        // Создаем запрос к интерактору для создания виджетов
         let request = DashboardFlow.SetupWidgets.Request()
         interactor.setupWidgets(request: request)
     }
@@ -63,12 +62,36 @@ class Dashboard: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         createWidgets()
+
+        contentView.refreshControl.addTarget(
+            self,
+            action: #selector(updateWidgets),
+            for: .valueChanged
+        )
+    }
+
+    @objc func updateWidgets() {
+        children.compactMap {
+            $0 as? Reloadable
+            }.forEach { $0.reload() }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.contentView.refreshControl.endRefreshing()
+        }
     }
 }
 
 extension Dashboard: Widget1ExternalDelegate {
-    func widget1ButtonTapped() {
-        print("refresh 1 in dashboard")
+    func cellWasTapped(index: Int) {
+        let alert = UIAlertController(
+            title: "Нажали на Петю \(index)",
+            message: nil,
+            preferredStyle: .alert)
+        let action =  UIAlertAction(title: "Cancel", style: .cancel) {(action: UIAlertAction!) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -80,7 +103,7 @@ extension Dashboard: Widget2ExternalDelegate {
 
 extension Dashboard: Widget3ExternalDelegate {
     func widget3buttonTapped() {
-        print("refresh 3 in dashboard")
+        widgetActionHandler?.updateSubscribers(for: .reloadBoth)
     }
 }
 

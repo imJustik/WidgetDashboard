@@ -9,7 +9,9 @@
 import UIKit
 
 protocol Widget {
-    var externalDelegate: WidgetExternalDelegate? {get set}
+    var externalDelegate: WidgetOutcomingHandler? {get set}
 }
 
-protocol WidgetExternalDelegate: AnyObject { }
+protocol Reloadable {
+    func reload()
+}

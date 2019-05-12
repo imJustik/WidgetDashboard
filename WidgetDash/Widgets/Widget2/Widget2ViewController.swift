@@ -9,7 +9,8 @@
 import UIKit
 
 class Widget2ViewController: WidgetViewController {
-    weak var externalDelegate: WidgetExternalDelegate?
+    weak var externalDelegate: WidgetOutcomingHandler?
+    let widgetSubscriber: WidgetSubscriberProtocol?
 
     let interactor: Widget2Interactor
     lazy var contentView = view as? Widget2View
@@ -28,11 +29,11 @@ class Widget2ViewController: WidgetViewController {
     init(
         interactor: Widget2Interactor,
         state: State,
-        externalDelegate: WidgetExternalDelegate) {
-        guard let external = externalDelegate as? Widget2ExternalDelegate else {
-            fatalError("You cannot init with this delegate type")
-        }
-        self.externalDelegate = external
+        externalDelegate: WidgetOutcomingHandler,
+        widgetSubscriber: WidgetSubscriberProtocol?) {
+
+        self.externalDelegate = externalDelegate
+        self.widgetSubscriber = widgetSubscriber
         self.interactor = interactor
         self.state = state
         super.init(nibName: nil, bundle: nil)
@@ -49,6 +50,9 @@ class Widget2ViewController: WidgetViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         set(state: state)
+        widgetSubscriber?.subscribe(eventType: .reloadBoth) { [weak self] in
+            self?.set(state: .loading)
+        }
     }
 
     override func loadView() {
@@ -72,6 +76,12 @@ extension Widget2ViewController {
     }
 }
 
-protocol Widget2ExternalDelegate: WidgetExternalDelegate {
+extension Widget2ViewController: Reloadable {
+    func reload() {
+        set(state: .loading)
+    }
+}
+
+protocol Widget2ExternalDelegate: WidgetOutcomingHandler {
     func widget2ButtonTapped()
 }

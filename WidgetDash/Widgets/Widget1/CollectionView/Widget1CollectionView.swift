@@ -9,9 +9,9 @@
 import UIKit
 
 class Widget1CollectionView: UICollectionView {
-    weak var actionDelegate: Widget1CollectionDelegate?
+    weak var actionDelegate: Widget1Delegate?
 
-    init(actionDelegate: Widget1CollectionDelegate,
+    init(actionDelegate: Widget1Delegate,
          dataSource: Widget1CollectionDataSource,
          layout: Widget1CollectionViewFlowLayout)
     {
@@ -34,7 +34,7 @@ class Widget1CollectionView: UICollectionView {
 extension Widget1CollectionView: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("select")
+        actionDelegate?.cellWasTapped(index: indexPath.item)
     }
     
 }

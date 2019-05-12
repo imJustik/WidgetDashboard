@@ -1,5 +1,9 @@
 import UIKit
 
+protocol Widget1Delegate: AnyObject {
+    func cellWasTapped(index: Int)
+}
+
 extension Widget1View {
     struct Appearance {
         let title = "Ебать виджет"
@@ -9,7 +13,6 @@ extension Widget1View {
 }
 
 class Widget1View: UIView {
-
     var collectionView: Widget1CollectionView
 
     lazy var textLabel: UILabel = {
@@ -22,7 +25,7 @@ class Widget1View: UIView {
 
     init(collectionFlowLayout: Widget1CollectionViewFlowLayout,
          collectionDataSource: Widget1CollectionDataSource,
-         actionDelegate: Widget1CollectionDelegate) {
+         actionDelegate: Widget1Delegate) {
 
         collectionView = Widget1CollectionView(
             actionDelegate: actionDelegate,
