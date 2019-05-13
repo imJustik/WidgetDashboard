@@ -56,7 +56,6 @@ class Widget1View: UIView {
             collectionView.isHidden = true
             textLabel.text = "Загружаюсь..."
         case let .display(data):
-            print(data)
             textLabel.isHidden = true
             collectionView.isHidden = false
         }

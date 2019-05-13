@@ -1,7 +1,8 @@
 import UIKit
 
 protocol Widget3Delegate: AnyObject {
-    func refreshButtonTapped()
+    func reloadFirst()
+    func reloadBoth()
 }
 
 extension Widget3View {
@@ -18,8 +19,15 @@ class Widget3View: UIView {
 
     lazy var button1: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Обновить виджеты", for: .normal)
-         button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        button.setTitle("Обновить первый", for: .normal)
+         button.addTarget(self, action: #selector(button1Action(_:)), for: .touchUpInside)
+        return button
+    }()
+
+    lazy var button2: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Обновить оба", for: .normal)
+        button.addTarget(self, action: #selector(button2Action(_:)), for: .touchUpInside)
         return button
     }()
 
@@ -49,6 +57,7 @@ class Widget3View: UIView {
         addSubview(textLabel)
         addSubview(buttonsView)
         buttonsView.addSubview(button1)
+        buttonsView.addSubview(button2)
     }
 
     func show(state: Widget3ViewController.State) {
@@ -63,8 +72,12 @@ class Widget3View: UIView {
         }
     }
 
-    @objc func buttonAction(_ sender:UIButton!) {
-        actionDelegate?.refreshButtonTapped()
+    @objc func button1Action(_ sender:UIButton!) {
+        actionDelegate?.reloadFirst()
+    }
+
+    @objc func button2Action(_ sender:UIButton!) {
+        actionDelegate?.reloadBoth()
     }
 
     func makeConstraints() {
@@ -74,7 +87,13 @@ class Widget3View: UIView {
         }
 
         button1.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(8)
+            make.width.equalTo(button2)
+            make.leading.top.bottom.equalToSuperview()
+        }
+
+        button2.snp.makeConstraints { make in
+            make.trailing.top.bottom.equalToSuperview()
+            make.left.equalTo(button1.snp.right)
         }
 
         textLabel.snp.makeConstraints { make in

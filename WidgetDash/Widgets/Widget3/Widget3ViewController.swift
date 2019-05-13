@@ -71,8 +71,12 @@ extension Widget3ViewController {
 }
 
 extension Widget3ViewController: Widget3Delegate {
-    func refreshButtonTapped() {
-        (externalDelegate as? Widget3ExternalDelegate)?.widget3buttonTapped()
+    func reloadFirst() {
+        (externalDelegate as? Widget3ExternalDelegate)?.reloadFirstTapped()
+    }
+
+    func reloadBoth() {
+        (externalDelegate as? Widget3ExternalDelegate)?.reloadBothTapped()
     }
 }
 
@@ -83,6 +87,7 @@ extension Widget3ViewController: Reloadable {
 }
 
 protocol Widget3ExternalDelegate: WidgetOutcomingHandler {
-    func widget3buttonTapped()
+    func reloadFirstTapped()
+    func reloadBothTapped()
 }
 

@@ -82,6 +82,4 @@ extension Widget2ViewController: Reloadable {
     }
 }
 
-protocol Widget2ExternalDelegate: WidgetOutcomingHandler {
-    func widget2ButtonTapped()
-}
+protocol Widget2ExternalDelegate: WidgetOutcomingHandler {}

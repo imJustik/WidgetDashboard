@@ -95,14 +95,14 @@ extension Dashboard: Widget1ExternalDelegate {
     }
 }
 
-extension Dashboard: Widget2ExternalDelegate {
-    func widget2ButtonTapped() {
-        print("refresh 2 in dashboard")
-    }
-}
+extension Dashboard: Widget2ExternalDelegate {}
 
 extension Dashboard: Widget3ExternalDelegate {
-    func widget3buttonTapped() {
+    func reloadFirstTapped() {
+        widgetActionHandler?.updateSubscribers(for: .reloadFaces)
+    }
+
+    func reloadBothTapped() {
         widgetActionHandler?.updateSubscribers(for: .reloadBoth)
     }
 }

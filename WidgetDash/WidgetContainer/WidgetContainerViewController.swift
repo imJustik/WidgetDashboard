@@ -2,7 +2,6 @@ import UIKit
 
 typealias WidgetViewController = Widget & UIViewController
 
-/// Контроллер-контейнер для виджетов дашборда
 final class WidgetContainerViewController: UIViewController {
     lazy var containerView = WidgetContainerView()
     let widget: WidgetViewController
