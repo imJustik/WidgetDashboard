@@ -11,7 +11,7 @@ import UIKit
 class Widget1ViewController: WidgetViewController {
     let uid: UUID = UUID()
 
-    weak var externalDelegate: WidgetOutcomingHandler?
+    weak var externalDelegate: WidgetActionDelegate?
     let widgetSubscriber: HandlesWidgetSubscriptions?
     
     let interactor: Widget1Interactor
@@ -35,7 +35,7 @@ class Widget1ViewController: WidgetViewController {
 
     init(interactor: Widget1Interactor,
          state: State,
-         externalDelegate: WidgetOutcomingHandler,
+         externalDelegate: WidgetActionDelegate,
          widgetSubscriber: HandlesWidgetSubscriptions?) {
         
         self.externalDelegate = externalDelegate
@@ -44,6 +44,7 @@ class Widget1ViewController: WidgetViewController {
         self.interactor = interactor
         self.state = state
         super.init(nibName: nil, bundle: nil)
+        subscribeToActions()
 
     }
 
@@ -96,7 +97,7 @@ extension Widget1ViewController {
 
 extension Widget1ViewController: Widget1Delegate {
     func cellWasTapped(index: Int) {
-        (externalDelegate as? Widget1ExternalDelegate)?.cellWasTapped(index: index)
+        (externalDelegate as? Widget1ActionDelegate)?.cellWasTapped(index: index)
     }
 }
 
@@ -106,6 +107,6 @@ extension Widget1ViewController: Reloadable {
     }
 }
 
-protocol Widget1ExternalDelegate: WidgetOutcomingHandler {
+protocol Widget1ActionDelegate: WidgetActionDelegate {
     func cellWasTapped(index: Int)
 }

@@ -10,8 +10,8 @@ import Foundation
 
 class DashboardBuilder {
     func build() -> Dashboard {
-        let widgetSubscriber = WidgetSubscriptionsHandler()
-        let widgetIncomingHandler = WidgetIncomingEventNotifier(widgetSubscriber: widgetSubscriber)
+        let widgetSubscriptionsHandler = WidgetSubscriptionsHandler()
+        let widgetIncomingHandler = WidgetIncomingEventNotifier(widgetSubscriptionsHandler: widgetSubscriptionsHandler)
 
         let widgetFactory = WidgetFactory()
         let widgetProvider = WidgetProvider(widgetFactory: widgetFactory)
@@ -23,7 +23,7 @@ class DashboardBuilder {
             state: .initial,
             widgetActionHandler: widgetIncomingHandler)
 
-        widgetFactory.widgetSubscriber = widgetSubscriber
+        widgetFactory.widgetSubscriptionsHandler = widgetSubscriptionsHandler
         widgetFactory.widgetOutcommingHandler = viewController
 
         presenter.viewController = viewController

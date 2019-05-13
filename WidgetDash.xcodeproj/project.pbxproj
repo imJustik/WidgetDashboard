@@ -22,7 +22,7 @@
 		454836202278B6DE0024FF11 /* DashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4548361F2278B6DE0024FF11 /* DashboardBuilder.swift */; };
 		454836222278B92E0024FF11 /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454836212278B92E0024FF11 /* WidgetFactory.swift */; };
 		454B7E3E22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */; };
-		454B7E4022884DB100CEAA0F /* WidgetOutcomingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E3F22884DB100CEAA0F /* WidgetOutcomingHandler.swift */; };
+		454B7E4022884DB100CEAA0F /* WidgetActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E3F22884DB100CEAA0F /* WidgetActionDelegate.swift */; };
 		454B7E4222884E9800CEAA0F /* WidgetSubscriptionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */; };
 		45CF8E662289792D00D6CE9C /* WidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E652289792D00D6CE9C /* WidgetProvider.swift */; };
 		45CF8E6822898A3400D6CE9C /* WidgetDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */; };
@@ -72,7 +72,7 @@
 		4548361F2278B6DE0024FF11 /* DashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardBuilder.swift; sourceTree = "<group>"; };
 		454836212278B92E0024FF11 /* WidgetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFactory.swift; sourceTree = "<group>"; };
 		454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIncomingEventNotifier.swift; sourceTree = "<group>"; };
-		454B7E3F22884DB100CEAA0F /* WidgetOutcomingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetOutcomingHandler.swift; sourceTree = "<group>"; };
+		454B7E3F22884DB100CEAA0F /* WidgetActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetActionDelegate.swift; sourceTree = "<group>"; };
 		454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSubscriptionsHandler.swift; sourceTree = "<group>"; };
 		45CF8E652289792D00D6CE9C /* WidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProvider.swift; sourceTree = "<group>"; };
 		45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataStore.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 				454836162278B6390024FF11 /* Widget.swift */,
 				454836212278B92E0024FF11 /* WidgetFactory.swift */,
 				454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */,
-				454B7E3F22884DB100CEAA0F /* WidgetOutcomingHandler.swift */,
+				454B7E3F22884DB100CEAA0F /* WidgetActionDelegate.swift */,
 				454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */,
 				45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */,
 				45CF8E6922898B8000D6CE9C /* WidgetService.swift */,
@@ -411,7 +411,7 @@
 				45F26A2B2285B77F0097CFC6 /* Widget1CollectionDelegate.swift in Sources */,
 				45F26A262285B5190097CFC6 /* Widget1Interactor.swift in Sources */,
 				45F26A1B2285B5190097CFC6 /* Widget2Presenter.swift in Sources */,
-				454B7E4022884DB100CEAA0F /* WidgetOutcomingHandler.swift in Sources */,
+				454B7E4022884DB100CEAA0F /* WidgetActionDelegate.swift in Sources */,
 				45F26A172285B5190097CFC6 /* Widget3ViewController.swift in Sources */,
 				45CF8E6A22898B8000D6CE9C /* WidgetService.swift in Sources */,
 				45F26A202285B5190097CFC6 /* Widget2DataFlow.swift in Sources */,

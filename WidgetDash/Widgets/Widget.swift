@@ -9,7 +9,7 @@
 import UIKit
 
 protocol Widget {
-    var externalDelegate: WidgetOutcomingHandler? {get set}
+    var externalDelegate: WidgetActionDelegate? {get set}
     var uid: UUID { get }
 }
 

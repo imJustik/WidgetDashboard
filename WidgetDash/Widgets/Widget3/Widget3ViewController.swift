@@ -13,7 +13,7 @@ class Widget3ViewController: WidgetViewController {
 
     let interactor: Widget3Interactor
     lazy var contentView = view as? Widget3View
-    weak var externalDelegate: WidgetOutcomingHandler?
+    weak var externalDelegate: WidgetActionDelegate?
 
     var state: State {
         didSet(oldState) {
@@ -29,7 +29,7 @@ class Widget3ViewController: WidgetViewController {
 
     init(interactor: Widget3Interactor,
          state: State,
-         externalDelegate: WidgetOutcomingHandler) {
+         externalDelegate: WidgetActionDelegate) {
 
         self.externalDelegate = externalDelegate
         self.interactor = interactor
@@ -73,11 +73,11 @@ extension Widget3ViewController {
 
 extension Widget3ViewController: Widget3Delegate {
     func reloadFirst() {
-        (externalDelegate as? Widget3ExternalDelegate)?.reloadFirstTapped()
+        (externalDelegate as? Widget3ActionDelegate)?.reloadFirstTapped()
     }
 
     func reloadBoth() {
-        (externalDelegate as? Widget3ExternalDelegate)?.reloadBothTapped()
+        (externalDelegate as? Widget3ActionDelegate)?.reloadBothTapped()
     }
 }
 
@@ -87,7 +87,7 @@ extension Widget3ViewController: Reloadable {
     }
 }
 
-protocol Widget3ExternalDelegate: WidgetOutcomingHandler {
+protocol Widget3ActionDelegate: WidgetActionDelegate {
     func reloadFirstTapped()
     func reloadBothTapped()
 }

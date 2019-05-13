@@ -3,4 +3,4 @@
 
 
 // Отправляет события из виджета. Widget -> [Внешний мир]
-protocol WidgetOutcomingHandler: AnyObject {}
+protocol WidgetActionDelegate: AnyObject {}

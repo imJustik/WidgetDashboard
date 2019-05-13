@@ -9,7 +9,7 @@
 import Foundation
 
 class Widget3Builder {
-    func build(externalDelegate: Widget3ExternalDelegate) -> Widget3ViewController {
+    func build(externalDelegate: Widget3ActionDelegate) -> Widget3ViewController {
         let presenter = Widget3Presenter()
         let interactor = Widget3Interactor(presenter: presenter)
         let controller = Widget3ViewController(

@@ -15,13 +15,13 @@ protocol NotifiesSubscribers {
 }
 
 class WidgetIncomingEventNotifier: NotifiesSubscribers {
-    let widgetSubscriber: WidgetSubscriptionsHandler
+    let widgetSubscriptionsHandler: WidgetSubscriptionsHandler
 
-    init(widgetSubscriber: WidgetSubscriptionsHandler) {
-        self.widgetSubscriber = widgetSubscriber
+    init(widgetSubscriptionsHandler: WidgetSubscriptionsHandler) {
+        self.widgetSubscriptionsHandler = widgetSubscriptionsHandler
     }
 
     func notifySubscribers(of event: WidgetEventType) {
-        widgetSubscriber.fireSubscriptions(for: event)
+        widgetSubscriptionsHandler.fireSubscriptions(for: event)
     }
 }

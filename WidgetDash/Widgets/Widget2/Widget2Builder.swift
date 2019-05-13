@@ -10,15 +10,15 @@ import Foundation
 
 class Widget2Builder {
     func build(
-        externalDelegate: Widget2ExternalDelegate,
-        widgetSubscriber: HandlesWidgetSubscriptions?) -> Widget2ViewController {
+        externalDelegate: Widget2ActionDelegate,
+        widgetSubscriptionsHandler: HandlesWidgetSubscriptions?) -> Widget2ViewController {
         let presenter = Widget2Presenter()
         let interactor = Widget2Interactor(presenter: presenter)
         let controller = Widget2ViewController(
             interactor: interactor,
             state: .loading,
             externalDelegate: externalDelegate,
-            widgetSubscriber: widgetSubscriber)
+            widgetSubscriber: widgetSubscriptionsHandler)
         presenter.viewController = controller
         return controller
     }

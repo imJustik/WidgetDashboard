@@ -11,7 +11,7 @@ import UIKit
 class Widget2ViewController: WidgetViewController {
     let uid: UUID = UUID()
     
-    weak var externalDelegate: WidgetOutcomingHandler?
+    weak var externalDelegate: WidgetActionDelegate?
     let widgetSubscriber: HandlesWidgetSubscriptions?
 
     let interactor: Widget2Interactor
@@ -31,7 +31,7 @@ class Widget2ViewController: WidgetViewController {
     init(
         interactor: Widget2Interactor,
         state: State,
-        externalDelegate: WidgetOutcomingHandler,
+        externalDelegate: WidgetActionDelegate,
         widgetSubscriber: HandlesWidgetSubscriptions?) {
 
         self.externalDelegate = externalDelegate
@@ -84,4 +84,4 @@ extension Widget2ViewController: Reloadable {
     }
 }
 
-protocol Widget2ExternalDelegate: WidgetOutcomingHandler {}
+protocol Widget2ActionDelegate: WidgetActionDelegate {}

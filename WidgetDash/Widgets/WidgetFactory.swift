@@ -21,35 +21,34 @@ class WidgetFactory {
     var widgets = [WidgetType]()
 
     /// Испольльзуют виджеты для подписки на события
-    var widgetSubscriber: HandlesWidgetSubscriptions?
-
+    var widgetSubscriptionsHandler: HandlesWidgetSubscriptions?
     /// Обрабатывает события, пришедшие из виджета
-    var widgetOutcommingHandler: WidgetOutcomingHandler?
+    var widgetOutcommingHandler: WidgetActionDelegate?
 
     func getWidgets(widgetStrings: [String]) -> [WidgetViewController] {
         return widgetStrings.compactMap {
             switch WidgetType.init(rawValue: $0)! {
             case .widget1:
                 guard
-                    let widget1Delegate = widgetOutcommingHandler as? Widget1ExternalDelegate
+                    let widget1Delegate = widgetOutcommingHandler as? Widget1ActionDelegate
                 else {  fatalError("Dashboard does not confirm this protocol") }
 
                 let builder = Widget1Builder()
                 return builder.build(
-                    externalDelegate: widget1Delegate,
-                    widgetSubscriber: widgetSubscriber)
+                    widgetActionDelegate: widget1Delegate,
+                    widgetSubscriptionsHandler: widgetSubscriptionsHandler)
             case .widget2:
                 guard
-                    let widget2Delegate = widgetOutcommingHandler as? Widget2ExternalDelegate
+                    let widget2Delegate = widgetOutcommingHandler as? Widget2ActionDelegate
                 else { fatalError("Dashboard does not confirm this protocol") }
 
                 let builder = Widget2Builder()
                 return builder.build(
                     externalDelegate: widget2Delegate,
-                    widgetSubscriber: widgetSubscriber)
+                    widgetSubscriptionsHandler: widgetSubscriptionsHandler)
             case .widget3:
                 guard
-                    let widget3Delegate = widgetOutcommingHandler as? Widget3ExternalDelegate
+                    let widget3Delegate = widgetOutcommingHandler as? Widget3ActionDelegate
                 else { fatalError("Dashboard does not confirm this protocol") }
 
                 let builder = Widget3Builder()

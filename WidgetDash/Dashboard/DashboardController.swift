@@ -79,7 +79,7 @@ class Dashboard: UIViewController {
     }
 }
 
-extension Dashboard: Widget1ExternalDelegate {
+extension Dashboard: Widget1ActionDelegate {
     func cellWasTapped(index: Int) {
         let alert = UIAlertController(
             title: "Нажали на Петю \(index)",
@@ -93,9 +93,9 @@ extension Dashboard: Widget1ExternalDelegate {
     }
 }
 
-extension Dashboard: Widget2ExternalDelegate {}
+extension Dashboard: Widget2ActionDelegate {}
 
-extension Dashboard: Widget3ExternalDelegate {
+extension Dashboard: Widget3ActionDelegate {
     func reloadFirstTapped() {
         widgetActionHandler?.notifySubscribers(of: .reloadFaces)
     }
