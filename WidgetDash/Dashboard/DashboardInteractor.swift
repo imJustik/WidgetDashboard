@@ -9,19 +9,19 @@
 import UIKit
 
 class DashboardInteractor {
-    let widgetFactory: WidgetFactory
+    let widgetProvider: WidgetProvider
     let presenter: DashboardPresenter
 
-    init(widgetFactory: WidgetFactory, presenter: DashboardPresenter) {
-        self.widgetFactory = widgetFactory
+    init(widgetProvider: WidgetProvider, presenter: DashboardPresenter) {
+        self.widgetProvider = widgetProvider
         self.presenter = presenter
     }
 
     func setupWidgets(request: DashboardFlow.SetupWidgets.Request) {
-        let widgets = widgetFactory.getWidgets()
-        let response = DashboardFlow.SetupWidgets.Response(result: widgets)
-        presenter.presentWidgets(response: response)
-        
+        widgetProvider.getWidgets(usingCache: false, completion: { [weak self] widgets in
+            let response = DashboardFlow.SetupWidgets.Response(result: widgets)
+            self?.presenter.presentWidgets(response: response)
+        })
     }
 }
 

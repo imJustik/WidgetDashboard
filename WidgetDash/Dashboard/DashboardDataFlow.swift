@@ -13,7 +13,7 @@ enum DashboardFlow {
         struct Request  { }
 
         struct Response {
-            var result: [Widget]
+            var result: [WidgetViewController]
         }
 
         struct ViewModel {

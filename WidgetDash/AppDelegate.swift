@@ -16,10 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let builder = DashboardBuilder()
-
-        window?.rootViewController = builder.build()
-        window?.makeKeyAndVisible()
+        let provider = WidgetsTypeProvider()
+        // TODO: сделать состояние загрузки для дашборда, если кеш пустой
+        provider.fetchWidgets {
+            let builder = DashboardBuilder()
+            self.window?.rootViewController = builder.build()
+            self.window?.makeKeyAndVisible()
+        }
         return true
     }
 }

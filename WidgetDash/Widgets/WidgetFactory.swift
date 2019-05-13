@@ -17,21 +17,16 @@ enum WidgetType: String {
 }
 
 class WidgetFactory {
-    let widgetStrings: [String]
+    let widgetStrings: [String] = []
     var widgets = [WidgetType]()
 
     /// Испольльзуют виджеты для подписки на события
-    var widgetSubscriber: WidgetSubscriberProtocol?
+    var widgetSubscriber: HandlesWidgetSubscriptions?
 
     /// Обрабатывает события, пришедшие из виджета
     var widgetOutcommingHandler: WidgetOutcomingHandler?
 
-
-    init(widgetStrings: [String]) {
-        self.widgetStrings = widgetStrings
-    }
-
-    func getWidgets() -> [Widget] {
+    func getWidgets(widgetStrings: [String]) -> [WidgetViewController] {
         return widgetStrings.compactMap {
             switch WidgetType.init(rawValue: $0)! {
             case .widget1:

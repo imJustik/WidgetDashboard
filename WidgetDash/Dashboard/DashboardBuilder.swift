@@ -10,13 +10,14 @@ import Foundation
 
 class DashboardBuilder {
     func build() -> Dashboard {
-        let widgetSubscriber = WidgetSubscriber()
-        let widgetIncomingHandler = WidgetIncomingHandler(widgetSubscriber: widgetSubscriber)
+        let widgetSubscriber = WidgetSubscriptionsHandler()
+        let widgetIncomingHandler = WidgetIncomingEventNotifier(widgetSubscriber: widgetSubscriber)
 
-        let widgetFactory = WidgetFactory(widgetStrings: ["w1","w2","w3"])
+        let widgetFactory = WidgetFactory()
+        let widgetProvider = WidgetProvider(widgetFactory: widgetFactory)
 
         let presenter = DashboardPresenter()
-        let interactor = DashboardInteractor(widgetFactory: widgetFactory, presenter: presenter)
+        let interactor = DashboardInteractor(widgetProvider: widgetProvider, presenter: presenter)
         let viewController = Dashboard(
             interactor: interactor,
             state: .initial,

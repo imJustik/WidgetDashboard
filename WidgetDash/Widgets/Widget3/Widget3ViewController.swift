@@ -9,6 +9,7 @@
 import UIKit
 
 class Widget3ViewController: WidgetViewController {
+    let uid: UUID = UUID()
 
     let interactor: Widget3Interactor
     lazy var contentView = view as? Widget3View

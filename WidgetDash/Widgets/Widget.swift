@@ -10,6 +10,7 @@ import UIKit
 
 protocol Widget {
     var externalDelegate: WidgetOutcomingHandler? {get set}
+    var uid: UUID { get }
 }
 
 protocol Reloadable {

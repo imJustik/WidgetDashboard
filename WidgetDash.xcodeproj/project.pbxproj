@@ -21,9 +21,13 @@
 		4548361E2278B6CD0024FF11 /* DashboardDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4548361D2278B6CD0024FF11 /* DashboardDataFlow.swift */; };
 		454836202278B6DE0024FF11 /* DashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4548361F2278B6DE0024FF11 /* DashboardBuilder.swift */; };
 		454836222278B92E0024FF11 /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454836212278B92E0024FF11 /* WidgetFactory.swift */; };
-		454B7E3E22884DA200CEAA0F /* WidgetIncomingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E3D22884DA200CEAA0F /* WidgetIncomingHandler.swift */; };
+		454B7E3E22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */; };
 		454B7E4022884DB100CEAA0F /* WidgetOutcomingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E3F22884DB100CEAA0F /* WidgetOutcomingHandler.swift */; };
-		454B7E4222884E9800CEAA0F /* WidgetSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E4122884E9800CEAA0F /* WidgetSubscriber.swift */; };
+		454B7E4222884E9800CEAA0F /* WidgetSubscriptionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */; };
+		45CF8E662289792D00D6CE9C /* WidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E652289792D00D6CE9C /* WidgetProvider.swift */; };
+		45CF8E6822898A3400D6CE9C /* WidgetDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */; };
+		45CF8E6A22898B8000D6CE9C /* WidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E6922898B8000D6CE9C /* WidgetService.swift */; };
+		45CF8E6C228991B200D6CE9C /* WidgetTypesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E6B228991B200D6CE9C /* WidgetTypesProvider.swift */; };
 		45F26A152285B5190097CFC6 /* Widget3Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F26A012285B5190097CFC6 /* Widget3Presenter.swift */; };
 		45F26A162285B5190097CFC6 /* Widget3Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F26A022285B5190097CFC6 /* Widget3Interactor.swift */; };
 		45F26A172285B5190097CFC6 /* Widget3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F26A032285B5190097CFC6 /* Widget3ViewController.swift */; };
@@ -67,9 +71,13 @@
 		4548361D2278B6CD0024FF11 /* DashboardDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDataFlow.swift; sourceTree = "<group>"; };
 		4548361F2278B6DE0024FF11 /* DashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardBuilder.swift; sourceTree = "<group>"; };
 		454836212278B92E0024FF11 /* WidgetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFactory.swift; sourceTree = "<group>"; };
-		454B7E3D22884DA200CEAA0F /* WidgetIncomingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIncomingHandler.swift; sourceTree = "<group>"; };
+		454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIncomingEventNotifier.swift; sourceTree = "<group>"; };
 		454B7E3F22884DB100CEAA0F /* WidgetOutcomingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetOutcomingHandler.swift; sourceTree = "<group>"; };
-		454B7E4122884E9800CEAA0F /* WidgetSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSubscriber.swift; sourceTree = "<group>"; };
+		454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSubscriptionsHandler.swift; sourceTree = "<group>"; };
+		45CF8E652289792D00D6CE9C /* WidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProvider.swift; sourceTree = "<group>"; };
+		45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataStore.swift; sourceTree = "<group>"; };
+		45CF8E6922898B8000D6CE9C /* WidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetService.swift; sourceTree = "<group>"; };
+		45CF8E6B228991B200D6CE9C /* WidgetTypesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTypesProvider.swift; sourceTree = "<group>"; };
 		45F26A012285B5190097CFC6 /* Widget3Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget3Presenter.swift; sourceTree = "<group>"; };
 		45F26A022285B5190097CFC6 /* Widget3Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget3Interactor.swift; sourceTree = "<group>"; };
 		45F26A032285B5190097CFC6 /* Widget3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget3ViewController.swift; sourceTree = "<group>"; };
@@ -154,14 +162,18 @@
 		454836152278B61B0024FF11 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				45CF8E652289792D00D6CE9C /* WidgetProvider.swift */,
 				45F26A0E2285B5190097CFC6 /* Widget1 */,
 				45F26A072285B5190097CFC6 /* Widget2 */,
 				45F26A002285B5190097CFC6 /* Widget3 */,
 				454836162278B6390024FF11 /* Widget.swift */,
 				454836212278B92E0024FF11 /* WidgetFactory.swift */,
-				454B7E3D22884DA200CEAA0F /* WidgetIncomingHandler.swift */,
+				454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */,
 				454B7E3F22884DB100CEAA0F /* WidgetOutcomingHandler.swift */,
-				454B7E4122884E9800CEAA0F /* WidgetSubscriber.swift */,
+				454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */,
+				45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */,
+				45CF8E6922898B8000D6CE9C /* WidgetService.swift */,
+				45CF8E6B228991B200D6CE9C /* WidgetTypesProvider.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -371,13 +383,14 @@
 				45F26A152285B5190097CFC6 /* Widget3Presenter.swift in Sources */,
 				454836062278B4D50024FF11 /* DashboardController.swift in Sources */,
 				45F26A1C2285B5190097CFC6 /* Widget2Interactor.swift in Sources */,
-				454B7E4222884E9800CEAA0F /* WidgetSubscriber.swift in Sources */,
+				454B7E4222884E9800CEAA0F /* WidgetSubscriptionsHandler.swift in Sources */,
 				45281AEA22848C7D002FD08B /* DashboardScrollView.swift in Sources */,
 				4548361C2278B6C20024FF11 /* DashboardPresenter.swift in Sources */,
 				454836222278B92E0024FF11 /* WidgetFactory.swift in Sources */,
 				45F26A182285B5190097CFC6 /* Widget3DataFlow.swift in Sources */,
-				454B7E3E22884DA200CEAA0F /* WidgetIncomingHandler.swift in Sources */,
+				454B7E3E22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift in Sources */,
 				4548361E2278B6CD0024FF11 /* DashboardDataFlow.swift in Sources */,
+				45CF8E6C228991B200D6CE9C /* WidgetTypesProvider.swift in Sources */,
 				45F26A192285B5190097CFC6 /* Widget3Builder.swift in Sources */,
 				45F26A222285B5190097CFC6 /* Widget1View.swift in Sources */,
 				45F26A162285B5190097CFC6 /* Widget3Interactor.swift in Sources */,
@@ -387,8 +400,10 @@
 				45F26A2F2285BAD90097CFC6 /* Widget1CollectionCell.swift in Sources */,
 				45281ADE22848B50002FD08B /* DashboardView.swift in Sources */,
 				454836042278B4D50024FF11 /* AppDelegate.swift in Sources */,
+				45CF8E6822898A3400D6CE9C /* WidgetDataStore.swift in Sources */,
 				45F26A242285B5190097CFC6 /* Widget1Builder.swift in Sources */,
 				45281ADC22848961002FD08B /* WidgetContainerViewController.swift in Sources */,
+				45CF8E662289792D00D6CE9C /* WidgetProvider.swift in Sources */,
 				45F26A282285B74F0097CFC6 /* Widget1CollectionView.swift in Sources */,
 				45F26A1A2285B5190097CFC6 /* Widget3View.swift in Sources */,
 				454836172278B6390024FF11 /* Widget.swift in Sources */,
@@ -398,6 +413,7 @@
 				45F26A1B2285B5190097CFC6 /* Widget2Presenter.swift in Sources */,
 				454B7E4022884DB100CEAA0F /* WidgetOutcomingHandler.swift in Sources */,
 				45F26A172285B5190097CFC6 /* Widget3ViewController.swift in Sources */,
+				45CF8E6A22898B8000D6CE9C /* WidgetService.swift in Sources */,
 				45F26A202285B5190097CFC6 /* Widget2DataFlow.swift in Sources */,
 				45F26A1F2285B5190097CFC6 /* Widget2View.swift in Sources */,
 				4548361A2278B6B80024FF11 /* DashboardInteractor.swift in Sources */,

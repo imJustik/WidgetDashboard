@@ -9,8 +9,10 @@
 import UIKit
 
 class Widget2ViewController: WidgetViewController {
+    let uid: UUID = UUID()
+    
     weak var externalDelegate: WidgetOutcomingHandler?
-    let widgetSubscriber: WidgetSubscriberProtocol?
+    let widgetSubscriber: HandlesWidgetSubscriptions?
 
     let interactor: Widget2Interactor
     lazy var contentView = view as? Widget2View
@@ -30,7 +32,7 @@ class Widget2ViewController: WidgetViewController {
         interactor: Widget2Interactor,
         state: State,
         externalDelegate: WidgetOutcomingHandler,
-        widgetSubscriber: WidgetSubscriberProtocol?) {
+        widgetSubscriber: HandlesWidgetSubscriptions?) {
 
         self.externalDelegate = externalDelegate
         self.widgetSubscriber = widgetSubscriber
@@ -50,7 +52,7 @@ class Widget2ViewController: WidgetViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         set(state: state)
-        widgetSubscriber?.subscribe(eventType: .reloadBoth) { [weak self] in
+        widgetSubscriber?.subscribe(eventType: .reloadBoth, uid: uid) { [weak self] in
             self?.set(state: .loading)
         }
     }

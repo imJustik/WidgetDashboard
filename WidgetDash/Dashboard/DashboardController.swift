@@ -1,12 +1,10 @@
 //  Created by Илья Кузнецов on 30/04/2019.
 
-//TODO: подумать, где будет WidgetFactory, может имеет смысл инжектировать в VC сразу список виджетов?
-
 import UIKit
 
 class Dashboard: UIViewController {
     let interactor: DashboardInteractor
-    let widgetActionHandler: WidgetIncomingHandler?
+    let widgetActionHandler: WidgetIncomingEventNotifier?
     lazy var contentView = DashboardView ()
 
     var state: State {
@@ -29,7 +27,7 @@ class Dashboard: UIViewController {
 
     init(interactor: DashboardInteractor,
          state: State,
-         widgetActionHandler: WidgetIncomingHandler) {
+         widgetActionHandler: WidgetIncomingEventNotifier) {
         self.widgetActionHandler = widgetActionHandler
         self.interactor = interactor
         self.state = state
@@ -99,11 +97,11 @@ extension Dashboard: Widget2ExternalDelegate {}
 
 extension Dashboard: Widget3ExternalDelegate {
     func reloadFirstTapped() {
-        widgetActionHandler?.updateSubscribers(for: .reloadFaces)
+        widgetActionHandler?.notifySubscribers(of: .reloadFaces)
     }
 
     func reloadBothTapped() {
-        widgetActionHandler?.updateSubscribers(for: .reloadBoth)
+        widgetActionHandler?.notifySubscribers(of: .reloadBoth)
     }
 }
 

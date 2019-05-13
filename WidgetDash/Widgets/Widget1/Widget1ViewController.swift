@@ -9,8 +9,10 @@
 import UIKit
 
 class Widget1ViewController: WidgetViewController {
+    let uid: UUID = UUID()
+
     weak var externalDelegate: WidgetOutcomingHandler?
-    let widgetSubscriber: WidgetSubscriberProtocol?
+    let widgetSubscriber: HandlesWidgetSubscriptions?
     
     let interactor: Widget1Interactor
     lazy var contentView = view as? Widget1View
@@ -34,7 +36,7 @@ class Widget1ViewController: WidgetViewController {
     init(interactor: Widget1Interactor,
          state: State,
          externalDelegate: WidgetOutcomingHandler,
-         widgetSubscriber: WidgetSubscriberProtocol?) {
+         widgetSubscriber: HandlesWidgetSubscriptions?) {
         
         self.externalDelegate = externalDelegate
         self.widgetSubscriber = widgetSubscriber
@@ -42,6 +44,7 @@ class Widget1ViewController: WidgetViewController {
         self.interactor = interactor
         self.state = state
         super.init(nibName: nil, bundle: nil)
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -50,16 +53,17 @@ class Widget1ViewController: WidgetViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        widgetSubscriber?.subscribe(eventType: .reloadFaces) { [weak self] in
-            self?.set(state: .loading)
-        }
-
-        widgetSubscriber?.subscribe(eventType: .reloadBoth) { [weak self] in
-            self?.set(state: .loading)
-        }
-
         set(state: state)
+    }
+
+    func subscribeToActions() {
+        widgetSubscriber?.subscribe(eventType: .reloadFaces, uid: uid) { [weak self] in
+            self?.set(state: .loading)
+        }
+
+        widgetSubscriber?.subscribe(eventType: .reloadBoth, uid: uid) { [weak self] in
+            self?.set(state: .loading)
+        }
     }
 
     override func loadView() {
