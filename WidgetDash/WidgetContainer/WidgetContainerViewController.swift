@@ -1,42 +1,53 @@
 import UIKit
 
+protocol WidgetContainerDelegate: AnyObject {
+    func navigate(to controller: UIViewController)
+}
+
 typealias WidgetViewController = Widget & UIViewController
 
-final class WidgetContainerViewController: UIViewController {
-    lazy var containerView = WidgetContainerView()
+class WidgetContainerViewController: WidgetViewController {
+    var externalDelegate: WidgetActionDelegate?
+    let uid: UUID = UUID()
+
+    var containerView: WidgetContainerView
     let widget: WidgetViewController
 
-    init(widget: WidgetViewController) {
+    var route: UIViewController?
+
+    init(widget: WidgetViewController,
+         externalDelegate: WidgetActionDelegate? = nil,
+         title: String,
+         route: UIViewController? = nil) {
         self.widget = widget
+        self.externalDelegate = externalDelegate
+        self.route = route
+        containerView = WidgetContainerView(title: title, needAction: route != nil)
         super.init(nibName: nil, bundle: nil)
-        addChild(widget)
+        containerView.delegate = self
     }
 
-    public required init?(coder _: NSCoder) {
+    required init?(coder _: NSCoder) {
         fatalError()
     }
 
-    public override func loadView() {
+    override func loadView() {
         view = containerView
-//        if let widgetView = widget.view as? WidgetView {
-//            containerView.setSelectable(widgetView.isSelectable)
-//            containerView.setSeparatorHidden(widgetView.isSeparatorHidden)
-//            containerView.setSeparatorInsets(widgetView.separatorInsets)
-//            if widgetView.isSelectable {
-//                widget.view.isUserInteractionEnabled = false
-//                containerView.addTarget(self, action: #selector(selectWidget), for: .touchUpInside)
-//            }
-//        } else {
-//            containerView.setSelectable(true)
-//        }
-
-        containerView.configure(with: widget.view)
+        addChild(widget)
         widget.didMove(toParent: self)
+        containerView.add(view: widget.view)
     }
+}
 
-    @objc
-    func selectWidget() {
-        print("select widget")
-        //widget.didBecomeSelected()
+extension WidgetContainerViewController: ContainerViewDelegate {
+    func tapButton() {
+        guard let route = route else { return }
+        (externalDelegate as? WidgetContainerDelegate)?.navigate(to: route)
+    }
+}
+extension WidgetContainerViewController: Reloadable {
+    func reload() {
+        guard let widget = widget as? Reloadable else { return }
+        widget.reload()
     }
 }

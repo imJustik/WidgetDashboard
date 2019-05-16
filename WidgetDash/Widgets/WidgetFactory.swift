@@ -32,20 +32,40 @@ class WidgetFactory {
                 guard
                     let widget1Delegate = widgetOutcommingHandler as? Widget1ActionDelegate
                 else {  fatalError("Dashboard does not confirm this protocol") }
-
                 let builder = Widget1Builder()
-                return builder.build(
+
+                let widget =  builder.build(
                     widgetActionDelegate: widget1Delegate,
                     widgetSubscriptionsHandler: widgetSubscriptionsHandler)
+
+                let route = Widget1Details()
+                let container = WidgetContainerViewController(
+                    widget: widget,
+                    externalDelegate: widget1Delegate,
+                    title: "Переводы",
+                    route: route
+                )
+                return container
+
             case .widget2:
                 guard
                     let widget2Delegate = widgetOutcommingHandler as? Widget2ActionDelegate
                 else { fatalError("Dashboard does not confirm this protocol") }
 
                 let builder = Widget2Builder()
-                return builder.build(
+                let widget = builder.build(
                     externalDelegate: widget2Delegate,
                     widgetSubscriptionsHandler: widgetSubscriptionsHandler)
+
+                let route = Widget2Details()
+                let container = WidgetContainerViewController(
+                    widget: widget,
+                    title: "Кредиты",
+                    route: route
+                )
+
+                return container
+
             case .widget3:
                 guard
                     let widget3Delegate = widgetOutcommingHandler as? Widget3ActionDelegate

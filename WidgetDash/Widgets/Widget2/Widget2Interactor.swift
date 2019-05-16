@@ -17,7 +17,7 @@ class Widget2Interactor {
 
     func fetchData(request: Widget2Flow.FetchData.Request) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
-            let response = Widget2Flow.FetchData.Response(result: "Widget2")
+            let response = Widget2Flow.FetchData.Response(result: "Верни сотку")
             self?.presenter.presentData(response: response)
         }
     }

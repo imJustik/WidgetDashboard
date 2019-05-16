@@ -1,7 +1,4 @@
-
-
-import SnapKit
-
+import UIKit
 extension DashboardView {
     struct Appearance {
         let refreshTintColor: UIColor = .gray

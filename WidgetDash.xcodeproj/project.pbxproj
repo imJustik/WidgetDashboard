@@ -22,8 +22,9 @@
 		454836202278B6DE0024FF11 /* DashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4548361F2278B6DE0024FF11 /* DashboardBuilder.swift */; };
 		454836222278B92E0024FF11 /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454836212278B92E0024FF11 /* WidgetFactory.swift */; };
 		454B7E3E22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */; };
-		454B7E4022884DB100CEAA0F /* WidgetActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E3F22884DB100CEAA0F /* WidgetActionDelegate.swift */; };
 		454B7E4222884E9800CEAA0F /* WidgetSubscriptionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */; };
+		45618457228CA918005579BD /* Widget1Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45618456228CA918005579BD /* Widget1Details.swift */; };
+		45618459228CA93A005579BD /* Widget2Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45618458228CA93A005579BD /* Widget2Details.swift */; };
 		45CF8E662289792D00D6CE9C /* WidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E652289792D00D6CE9C /* WidgetProvider.swift */; };
 		45CF8E6822898A3400D6CE9C /* WidgetDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */; };
 		45CF8E6A22898B8000D6CE9C /* WidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E6922898B8000D6CE9C /* WidgetService.swift */; };
@@ -72,8 +73,9 @@
 		4548361F2278B6DE0024FF11 /* DashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardBuilder.swift; sourceTree = "<group>"; };
 		454836212278B92E0024FF11 /* WidgetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFactory.swift; sourceTree = "<group>"; };
 		454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIncomingEventNotifier.swift; sourceTree = "<group>"; };
-		454B7E3F22884DB100CEAA0F /* WidgetActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetActionDelegate.swift; sourceTree = "<group>"; };
 		454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSubscriptionsHandler.swift; sourceTree = "<group>"; };
+		45618456228CA918005579BD /* Widget1Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget1Details.swift; sourceTree = "<group>"; };
+		45618458228CA93A005579BD /* Widget2Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget2Details.swift; sourceTree = "<group>"; };
 		45CF8E652289792D00D6CE9C /* WidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProvider.swift; sourceTree = "<group>"; };
 		45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataStore.swift; sourceTree = "<group>"; };
 		45CF8E6922898B8000D6CE9C /* WidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetService.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		454836022278B4D50024FF11 /* WidgetDash */ = {
 			isa = PBXGroup;
 			children = (
+				45618455228CA8D4005579BD /* Features */,
 				45281AD8228476FD002FD08B /* WidgetContainer */,
 				454836182278B6990024FF11 /* Dashboard */,
 				454836152278B61B0024FF11 /* Widgets */,
@@ -169,7 +172,6 @@
 				454836162278B6390024FF11 /* Widget.swift */,
 				454836212278B92E0024FF11 /* WidgetFactory.swift */,
 				454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */,
-				454B7E3F22884DB100CEAA0F /* WidgetActionDelegate.swift */,
 				454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */,
 				45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */,
 				45CF8E6922898B8000D6CE9C /* WidgetService.swift */,
@@ -190,6 +192,15 @@
 				45281AE922848C7D002FD08B /* DashboardScrollView.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		45618455228CA8D4005579BD /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				45618456228CA918005579BD /* Widget1Details.swift */,
+				45618458228CA93A005579BD /* Widget2Details.swift */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 		45F26A002285B5190097CFC6 /* Widget3 */ = {
@@ -395,6 +406,7 @@
 				45F26A222285B5190097CFC6 /* Widget1View.swift in Sources */,
 				45F26A162285B5190097CFC6 /* Widget3Interactor.swift in Sources */,
 				45F26A212285B5190097CFC6 /* Widget1ViewController.swift in Sources */,
+				45618459228CA93A005579BD /* Widget2Details.swift in Sources */,
 				45F26A1D2285B5190097CFC6 /* Widget2Builder.swift in Sources */,
 				45F26A1E2285B5190097CFC6 /* Widget2ViewController.swift in Sources */,
 				45F26A2F2285BAD90097CFC6 /* Widget1CollectionCell.swift in Sources */,
@@ -411,12 +423,12 @@
 				45F26A2B2285B77F0097CFC6 /* Widget1CollectionDelegate.swift in Sources */,
 				45F26A262285B5190097CFC6 /* Widget1Interactor.swift in Sources */,
 				45F26A1B2285B5190097CFC6 /* Widget2Presenter.swift in Sources */,
-				454B7E4022884DB100CEAA0F /* WidgetActionDelegate.swift in Sources */,
 				45F26A172285B5190097CFC6 /* Widget3ViewController.swift in Sources */,
 				45CF8E6A22898B8000D6CE9C /* WidgetService.swift in Sources */,
 				45F26A202285B5190097CFC6 /* Widget2DataFlow.swift in Sources */,
 				45F26A1F2285B5190097CFC6 /* Widget2View.swift in Sources */,
 				4548361A2278B6B80024FF11 /* DashboardInteractor.swift in Sources */,
+				45618457228CA918005579BD /* Widget1Details.swift in Sources */,
 				45F26A232285B5190097CFC6 /* Widget1Presenter.swift in Sources */,
 				45F26A2D2285B7890097CFC6 /* Widget1ColletctionDataSource.swift in Sources */,
 				45281ADA2284772D002FD08B /* WidgetContainerView.swift in Sources */,
@@ -563,6 +575,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37AJSFSX3R;
 				INFOPLIST_FILE = WidgetDash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -582,6 +595,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37AJSFSX3R;
 				INFOPLIST_FILE = WidgetDash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,10 +1,5 @@
-//
-//  AppDelegate.swift
-//  WidgetDash
-//
 //  Created by Илья Кузнецов on 30/04/2019.
 //  Copyright © 2019 Илья Кузнецов. All rights reserved.
-//
 
 import UIKit
 
@@ -20,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: сделать состояние загрузки для дашборда, если кеш пустой
         provider.fetchWidgets {
             let builder = DashboardBuilder()
-            self.window?.rootViewController = builder.build()
+            let controller = builder.build()
+            let navigationController = UINavigationController(rootViewController: controller)
+            controller.title = "Dashboard example"
+            self.window?.rootViewController = navigationController
             self.window?.makeKeyAndVisible()
         }
         return true

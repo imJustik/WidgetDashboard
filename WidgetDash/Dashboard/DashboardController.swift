@@ -13,17 +13,15 @@ class Dashboard: UIViewController {
             case (_, .initial):
                 createWidgets()
             case let (_, .displayWidgets(widgets)):
-                for var widget in widgets {
-                    guard let widgetViewController = widget as? WidgetViewController else { return }
+                widgets.forEach {
+                    guard let widgetViewController = $0 as? WidgetViewController else { return }
                     addChild(widgetViewController)
-                    widget.externalDelegate = self
                     contentView.stackView.addArrangedSubview(widgetViewController.view)
                     widgetViewController.didMove(toParent: self)
                 }
             }
         }
     }
-
 
     init(interactor: DashboardInteractor,
          state: State,
@@ -79,22 +77,6 @@ class Dashboard: UIViewController {
     }
 }
 
-extension Dashboard: Widget1ActionDelegate {
-    func cellWasTapped(index: Int) {
-        let alert = UIAlertController(
-            title: "Нажали на Петю \(index)",
-            message: nil,
-            preferredStyle: .alert)
-        let action =  UIAlertAction(title: "Cancel", style: .cancel) {(action: UIAlertAction!) in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
-}
-
-extension Dashboard: Widget2ActionDelegate {}
-
 extension Dashboard: Widget3ActionDelegate {
     func reloadFirstTapped() {
         widgetActionHandler?.notifySubscribers(of: .reloadFaces)
@@ -109,5 +91,28 @@ extension Dashboard {
     enum State {
         case initial
         case displayWidgets([Widget])
+    }
+}
+
+extension Dashboard: Widget2ActionDelegate {}
+
+extension Dashboard: Widget1ActionDelegate {
+
+    func cellWasTapped(index: Int) {
+        let alert = UIAlertController(
+            title: "Нажали на Петю \(index)",
+            message: nil,
+            preferredStyle: .alert)
+        let action =  UIAlertAction(title: "Cancel", style: .cancel) {(action: UIAlertAction!) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension Dashboard: WidgetContainerDelegate {
+    func navigate(to controller: UIViewController) {
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

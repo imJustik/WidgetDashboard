@@ -1,95 +1,118 @@
-//
-//  WidgetContainerView.swift
-//  WidgetDash
-//
 //  Created by Илья Кузнецов on 09/05/2019.
 //  Copyright © 2019 Илья Кузнецов. All rights reserved.
-//
 
 import UIKit
 import SnapKit
 
-class WidgetContainerView: UIControl {
-    let appearance = Appearance(); struct Appearance {
-        let separatorColor: UIColor = .darkGray
-        let defaultBackgroundColor: UIColor = .white
-        let selectedBackgroundColor: UIColor = .gray
-        let separatorHeight: CGFloat = 1.0
-    }
+protocol ContainerViewDelegate: AnyObject {
+    func tapButton()
+}
 
-    private lazy var separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = appearance.separatorColor
-        return view
+class WidgetContainerView: UIControl {
+    weak var delegate: ContainerViewDelegate?
+    var widgetView = UIView()
+
+    lazy var headerView = UIView()
+    let hasAction: Bool
+
+    lazy var headerTitle: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.addTarget(self, action: #selector(headerButtonTapped(_:)), for: .touchUpInside)
+        return button
     }()
 
-    private weak var view: UIView?
+    lazy var actionButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "icon_add__m"), for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.addTarget(self, action: #selector(actionButtonTapped(_:)), for: .touchUpInside)
+        return button
+    }()
 
-    public override var isHighlighted: Bool {
-        didSet {
-            updateBackground()
-        }
-    }
+    lazy var stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        return stack
+    }()
 
-    public override var isSelected: Bool {
-        didSet {
-            updateBackground()
-        }
-    }
 
-    public init() {
+    public init(title: String, needAction: Bool = false) {
+        hasAction = needAction
         super.init(frame: .zero)
         addSubviews()
         makeConstraints()
-        setSeparatorHidden(true)
-        setSelectable(false)
+        stackView.addArrangedSubview(headerView)
+        headerTitle.setTitle(title, for: .normal)
+
     }
 
     public required init?(coder _: NSCoder) {
         fatalError()
     }
 
+    @objc func actionButtonTapped(_ sender:UIButton!) {
+        delegate?.tapButton()
+    }
+
+    @objc func headerButtonTapped(_ sender:UIButton!) {
+
+        if widgetView.isHidden {
+            UIView.animate(withDuration: 0.15) { [weak self] in
+                self?.widgetView.alpha = 1
+                self?.widgetView.isHidden = false
+            }
+        } else {
+            UIView.animate(withDuration: 0.15){ [weak self] in
+                self?.widgetView.alpha = 0
+                self?.widgetView.isHidden = true
+            }
+        }
+    }
+
+    func add(view: UIView) {
+        widgetView = view
+        stackView.addArrangedSubview(view)
+    }
+
     private func addSubviews() {
-        addSubview(separatorView)
+        headerView.addSubview(headerTitle)
+        addSubview(stackView)
+        if hasAction {
+            headerView.addSubview(actionButton)
+            makeConstraintsWithAction()
+            return
+        }
+        makeConstraintsWithOutAction()
+    }
+
+    func makeConstraintsWithAction() {
+        headerTitle.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        actionButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
+        headerTitle.snp.makeConstraints { make in
+            make.top.left.bottom.equalToSuperview().inset(8)
+            make.right.equalTo(actionButton.snp.left).offset(-8)
+        }
+
+        actionButton.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.right.equalToSuperview().inset(12)
+        }
+    }
+
+    func makeConstraintsWithOutAction() {
+        headerTitle.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(8)
+        }
     }
 
     private func makeConstraints() {
-        separatorView.snp.makeConstraints { make in
-            make.height.equalTo(appearance.separatorHeight)
-            make.left.right.bottom.equalToSuperview()
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.top.bottom.equalToSuperview()
+            make.width.equalToSuperview()
         }
-    }
-
-    public func configure(with view: UIView) {
-        if let currentView = self.view {
-            currentView.removeFromSuperview()
-        }
-
-        self.view = view
-        insertSubview(view, belowSubview: separatorView)
-        view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
-
-    public func setSeparatorHidden(_ hidden: Bool) {
-        separatorView.isHidden = hidden
-    }
-
-    public func setSeparatorInsets(_ insets: UIEdgeInsets) {
-        separatorView.snp.updateConstraints { make in
-            make.left.right.equalToSuperview().inset(insets)
-        }
-    }
-
-    public func setSelectable(_ selectable: Bool) {
-        isEnabled = selectable
-        backgroundColor = selectable ? appearance.defaultBackgroundColor : .clear
-    }
-
-    private func updateBackground() {
-        backgroundColor = isHighlighted || isSelected
-            ? appearance.selectedBackgroundColor
-            : appearance.defaultBackgroundColor
     }
 }

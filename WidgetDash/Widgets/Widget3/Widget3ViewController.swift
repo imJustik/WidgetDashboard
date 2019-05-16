@@ -1,15 +1,10 @@
-//
-//  Widget1ViewController.swift
-//  WidgetDash
-//
 //  Created by Илья Кузнецов on 09/05/2019.
 //  Copyright © 2019 Илья Кузнецов. All rights reserved.
-//
 
 import UIKit
 
 class Widget3ViewController: WidgetViewController {
-    let uid: UUID = UUID()
+    var uid: UUID
 
     let interactor: Widget3Interactor
     lazy var contentView = view as? Widget3View
@@ -29,8 +24,9 @@ class Widget3ViewController: WidgetViewController {
 
     init(interactor: Widget3Interactor,
          state: State,
-         externalDelegate: WidgetActionDelegate) {
-
+         externalDelegate: WidgetActionDelegate,
+         uid: UUID = UUID()) {
+        self.uid = uid
         self.externalDelegate = externalDelegate
         self.interactor = interactor
         self.state = state

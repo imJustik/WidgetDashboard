@@ -9,7 +9,7 @@
 import UIKit
 
 class Widget2ViewController: WidgetViewController {
-    let uid: UUID = UUID()
+    var uid: UUID
     
     weak var externalDelegate: WidgetActionDelegate?
     let widgetSubscriber: HandlesWidgetSubscriptions?
@@ -32,8 +32,9 @@ class Widget2ViewController: WidgetViewController {
         interactor: Widget2Interactor,
         state: State,
         externalDelegate: WidgetActionDelegate,
-        widgetSubscriber: HandlesWidgetSubscriptions?) {
-
+        widgetSubscriber: HandlesWidgetSubscriptions?,
+        uid: UUID = UUID()) {
+        self.uid = uid
         self.externalDelegate = externalDelegate
         self.widgetSubscriber = widgetSubscriber
         self.interactor = interactor
