@@ -27,13 +27,13 @@ class WidgetProvider {
 
     func getWidgets(usingCache: Bool, completion: @escaping (([WidgetViewController]) -> Void)) {
         if usingCache {
-            let widgets =  widgetFactory.getWidgets(widgetStrings: widgetDataStore.widgets)
+            let widgets = widgetFactory.getWidgets(widgetModels: widgetDataStore.widgets)
             completion(widgets)
             return
         }
 
         widgetService.fetchWidgets { [weak self] (widgetsStr) in
-            let widgets = self?.widgetFactory.getWidgets(widgetStrings: widgetsStr)
+            let widgets = self?.widgetFactory.getWidgets(widgetModels: widgetsStr)
             self?.widgetDataStore.widgets = widgetsStr
             completion(widgets!)
         }

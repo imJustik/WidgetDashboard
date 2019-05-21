@@ -10,69 +10,85 @@
 
 import UIKit
 
-enum WidgetType: String {
-    case widget1 = "w1"
-    case widget2 = "w2"
-    case widget3 = "w3"
-}
 
 class WidgetFactory {
-    let widgetStrings: [String] = []
     var widgets = [WidgetType]()
 
     /// Испольльзуют виджеты для подписки на события
     var widgetSubscriptionsHandler: HandlesWidgetSubscriptions?
     /// Обрабатывает события, пришедшие из виджета
     var widgetOutcommingHandler: WidgetActionDelegate?
-
-    func getWidgets(widgetStrings: [String]) -> [WidgetViewController] {
-        return widgetStrings.compactMap {
-            switch WidgetType.init(rawValue: $0)! {
+    
+    func getWidgets(widgetModels: [WidgetModel]) -> [WidgetViewController] {
+        return widgetModels.compactMap {
+            switch $0.type {
             case .widget1:
                 guard
                     let widget1Delegate = widgetOutcommingHandler as? Widget1ActionDelegate
-                else {  fatalError("Dashboard does not confirm this protocol") }
+                else {  fatalError("Dashboard does not conform this protocol") }
                 let builder = Widget1Builder()
 
                 let widget =  builder.build(
                     widgetActionDelegate: widget1Delegate,
                     widgetSubscriptionsHandler: widgetSubscriptionsHandler)
 
-                let route = Widget1Details()
-                let container = WidgetContainerViewController(
-                    widget: widget,
-                    externalDelegate: widget1Delegate,
-                    title: "Переводы",
-                    route: route
-                )
-                return container
+                if let container = $0.container {
+                    let container = WidgetContainerViewController(
+                        widget: widget,
+                        externalDelegate: widget1Delegate,
+                        title: container.title,
+                        route: container.deeplink
+                    )
+                    return container
+                }
+
+                return widget
 
             case .widget2:
                 guard
                     let widget2Delegate = widgetOutcommingHandler as? Widget2ActionDelegate
-                else { fatalError("Dashboard does not confirm this protocol") }
+                else { fatalError("Dashboard does not conform this protocol") }
 
                 let builder = Widget2Builder()
                 let widget = builder.build(
                     externalDelegate: widget2Delegate,
                     widgetSubscriptionsHandler: widgetSubscriptionsHandler)
 
-                let route = Widget2Details()
-                let container = WidgetContainerViewController(
-                    widget: widget,
-                    title: "Кредиты",
-                    route: route
-                )
 
-                return container
+                if let container = $0.container {
+                    let container = WidgetContainerViewController(
+                        widget: widget,
+                        externalDelegate: widget2Delegate,
+                        title: container.title,
+                        route: container.deeplink
+                    )
+
+                    return container
+                }
+                return widget
 
             case .widget3:
                 guard
                     let widget3Delegate = widgetOutcommingHandler as? Widget3ActionDelegate
-                else { fatalError("Dashboard does not confirm this protocol") }
+                else { fatalError("Dashboard does not conform this protocol") }
 
                 let builder = Widget3Builder()
-                return builder.build(externalDelegate: widget3Delegate)
+
+                let widget = builder.build(
+                    externalDelegate: widget3Delegate)
+
+
+                if let container = $0.container {
+                    let container = WidgetContainerViewController(
+                        widget: widget,
+                        externalDelegate: widget3Delegate,
+                        title: container.title,
+                        route: container.deeplink
+                    )
+                    return container
+                }
+
+                return widget
             }
         }
     }

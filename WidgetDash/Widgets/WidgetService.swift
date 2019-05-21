@@ -3,7 +3,39 @@
 
 
 class WidgetService {
-    func fetchWidgets(completion: @escaping ([String]) -> Void) {
-          completion(["w1","w2","w3"])
+    func fetchWidgets(completion: @escaping ([WidgetModel]) -> Void) {
+        let widget1 = WidgetModel(
+            type: .widget1,
+            container: WidgetContainerModel(
+                type: .basic,
+                title: "Переводы",
+                deeplink: "Диплинк в переводы"
+            )
+        )
+
+        let widget2 = WidgetModel(
+            type: .widget2,
+            container: WidgetContainerModel(
+                type: .basic,
+                title: "Кредиты",
+                deeplink: "Диплинк в кредиты"
+            )
+        )
+
+        let widget3 = WidgetModel(type: .widget3)
+
+
+// Расскоментировать, что бы создать widget3 с контейнером
+//        let widget3 = WidgetModel(
+//            type: .widget3,
+//            container: WidgetContainerModel(
+//                    type: .basic,
+//                    title: "Кредиты",
+//                    deeplink: "Диплинк в кредиты"
+//            )
+//        )
+
+
+        completion([widget1,widget2, widget3])
     }
 }

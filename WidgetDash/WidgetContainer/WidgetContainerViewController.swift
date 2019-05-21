@@ -1,7 +1,7 @@
 import UIKit
 
 protocol WidgetContainerDelegate: AnyObject {
-    func navigate(to controller: UIViewController)
+    func navigate(to route: String)
 }
 
 typealias WidgetViewController = Widget & UIViewController
@@ -13,12 +13,12 @@ class WidgetContainerViewController: WidgetViewController {
     var containerView: WidgetContainerView
     let widget: WidgetViewController
 
-    var route: UIViewController?
+    var route: String?
 
     init(widget: WidgetViewController,
          externalDelegate: WidgetActionDelegate? = nil,
          title: String,
-         route: UIViewController? = nil) {
+         route: String? = nil) {
         self.widget = widget
         self.externalDelegate = externalDelegate
         self.route = route

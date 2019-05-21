@@ -46,7 +46,6 @@ class WidgetContainerView: UIControl {
         makeConstraints()
         stackView.addArrangedSubview(headerView)
         headerTitle.setTitle(title, for: .normal)
-
     }
 
     public required init?(coder _: NSCoder) {
@@ -58,7 +57,6 @@ class WidgetContainerView: UIControl {
     }
 
     @objc func headerButtonTapped(_ sender:UIButton!) {
-
         if widgetView.isHidden {
             UIView.animate(withDuration: 0.15) { [weak self] in
                 self?.widgetView.alpha = 1

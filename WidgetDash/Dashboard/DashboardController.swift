@@ -14,10 +14,9 @@ class Dashboard: UIViewController {
                 createWidgets()
             case let (_, .displayWidgets(widgets)):
                 widgets.forEach {
-                    guard let widgetViewController = $0 as? WidgetViewController else { return }
-                    addChild(widgetViewController)
-                    contentView.stackView.addArrangedSubview(widgetViewController.view)
-                    widgetViewController.didMove(toParent: self)
+                    addChild($0)
+                    contentView.stackView.addArrangedSubview($0.view)
+                    $0.didMove(toParent: self)
                 }
             }
         }
@@ -90,7 +89,7 @@ extension Dashboard: Widget3ActionDelegate {
 extension Dashboard {
     enum State {
         case initial
-        case displayWidgets([Widget])
+        case displayWidgets([WidgetViewController])
     }
 }
 
@@ -112,7 +111,15 @@ extension Dashboard: Widget1ActionDelegate {
 }
 
 extension Dashboard: WidgetContainerDelegate {
-    func navigate(to controller: UIViewController) {
-        navigationController?.pushViewController(controller, animated: true)
+    func navigate(to route: String) {
+        let alert = UIAlertController(
+            title: "Переходим на \(route)",
+            message: nil,
+            preferredStyle: .alert)
+        let action =  UIAlertAction(title: "Хорошо", style: .cancel) {(action: UIAlertAction!) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }

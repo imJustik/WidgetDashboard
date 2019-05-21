@@ -73,13 +73,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WidgetDash/WidgetContainer/WidgetContainerView.swift"
-            timestampString = "579700441.616078"
+            filePath = "WidgetDash/PlistHelper.swift"
+            timestampString = "580151076.710621"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "makeConstraintsWithAction()"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "getPlist(withName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WidgetDash/Widgets/WidgetTranslator.swift"
+            timestampString = "580151076.711144"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "translateForm(disctionaty:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
