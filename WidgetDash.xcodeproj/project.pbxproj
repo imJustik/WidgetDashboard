@@ -23,8 +23,6 @@
 		454836222278B92E0024FF11 /* WidgetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454836212278B92E0024FF11 /* WidgetFactory.swift */; };
 		454B7E3E22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */; };
 		454B7E4222884E9800CEAA0F /* WidgetSubscriptionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */; };
-		4561845E228F1A0D005579BD /* PlistHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561845D228F1A0D005579BD /* PlistHelper.swift */; };
-		4582C1E52292D2B600CECB5B /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4582C1E42292D2B600CECB5B /* Dictionary.swift */; };
 		45CF8E662289792D00D6CE9C /* WidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E652289792D00D6CE9C /* WidgetProvider.swift */; };
 		45CF8E6822898A3400D6CE9C /* WidgetDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */; };
 		45CF8E6A22898B8000D6CE9C /* WidgetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF8E6922898B8000D6CE9C /* WidgetService.swift */; };
@@ -74,8 +72,6 @@
 		454836212278B92E0024FF11 /* WidgetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFactory.swift; sourceTree = "<group>"; };
 		454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetIncomingEventNotifier.swift; sourceTree = "<group>"; };
 		454B7E4122884E9800CEAA0F /* WidgetSubscriptionsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSubscriptionsHandler.swift; sourceTree = "<group>"; };
-		4561845D228F1A0D005579BD /* PlistHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistHelper.swift; sourceTree = "<group>"; };
-		4582C1E42292D2B600CECB5B /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		45CF8E652289792D00D6CE9C /* WidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProvider.swift; sourceTree = "<group>"; };
 		45CF8E6722898A3400D6CE9C /* WidgetDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataStore.swift; sourceTree = "<group>"; };
 		45CF8E6922898B8000D6CE9C /* WidgetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetService.swift; sourceTree = "<group>"; };
@@ -150,7 +146,6 @@
 		454836022278B4D50024FF11 /* WidgetDash */ = {
 			isa = PBXGroup;
 			children = (
-				4582C1E32292D2A200CECB5B /* Extensions */,
 				45281AD8228476FD002FD08B /* WidgetContainer */,
 				454836182278B6990024FF11 /* Dashboard */,
 				454836152278B61B0024FF11 /* Widgets */,
@@ -158,7 +153,6 @@
 				4548360A2278B4D70024FF11 /* Assets.xcassets */,
 				4548360C2278B4D70024FF11 /* LaunchScreen.storyboard */,
 				4548360F2278B4D70024FF11 /* Info.plist */,
-				4561845D228F1A0D005579BD /* PlistHelper.swift */,
 			);
 			path = WidgetDash;
 			sourceTree = "<group>";
@@ -193,14 +187,6 @@
 				45281AE922848C7D002FD08B /* DashboardScrollView.swift */,
 			);
 			path = Dashboard;
-			sourceTree = "<group>";
-		};
-		4582C1E32292D2A200CECB5B /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				4582C1E42292D2B600CECB5B /* Dictionary.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		45F26A002285B5190097CFC6 /* Widget3 */ = {
@@ -414,7 +400,6 @@
 				45CF8E6822898A3400D6CE9C /* WidgetDataStore.swift in Sources */,
 				45F26A242285B5190097CFC6 /* Widget1Builder.swift in Sources */,
 				45281ADC22848961002FD08B /* WidgetContainerViewController.swift in Sources */,
-				4561845E228F1A0D005579BD /* PlistHelper.swift in Sources */,
 				45CF8E662289792D00D6CE9C /* WidgetProvider.swift in Sources */,
 				45F26A282285B74F0097CFC6 /* Widget1CollectionView.swift in Sources */,
 				45F26A1A2285B5190097CFC6 /* Widget3View.swift in Sources */,
@@ -424,7 +409,6 @@
 				45F26A262285B5190097CFC6 /* Widget1Interactor.swift in Sources */,
 				45F26A1B2285B5190097CFC6 /* Widget2Presenter.swift in Sources */,
 				45F26A172285B5190097CFC6 /* Widget3ViewController.swift in Sources */,
-				4582C1E52292D2B600CECB5B /* Dictionary.swift in Sources */,
 				45CF8E6A22898B8000D6CE9C /* WidgetService.swift in Sources */,
 				45F26A202285B5190097CFC6 /* Widget2DataFlow.swift in Sources */,
 				45F26A1F2285B5190097CFC6 /* Widget2View.swift in Sources */,
