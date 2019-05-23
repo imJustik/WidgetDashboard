@@ -18,9 +18,9 @@ protocol Reloadable {
 
 /// Cписок всех возможных виджетов
 enum WidgetType: String {
-    case widget1 = "w1"
-    case widget2 = "w2"
-    case widget3 = "w3"
+    case widget1 = "widget1"
+    case widget2 = "widget2"
+    case widget3 = "widget3"
 }
 
 // TODO: Подумать, как можно сделать свой WidgetModel для каждого типа виджета
@@ -38,8 +38,8 @@ enum WidgetContainerType: String {
 
 
 class Widget1Model {
-    let container: WidgetContainerModel
-    init(container: WidgetContainerModel) {
+    let container: WidgetContainerModel?
+    init(container: WidgetContainerModel? = nil) {
         self.container = container
     }
 }
@@ -127,7 +127,7 @@ class WidgetTranslator {
 
 
     func translateFrom(json: [String: Any]) -> WidgetModelType {
-        let type = json["id"] as! WidgetType
+        let type = WidgetType(rawValue: json["id"] as! String)!
         let widgetData = json["widgetData"] as! [String: Any]
 
         switch type {

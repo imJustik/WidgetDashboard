@@ -32,6 +32,12 @@ class WidgetService {
             ],
         ]
 
+        let translator = WidgetTranslator()
+        completion(translator.translateForm(array: arr))
+    }
+}
+
+
 //        let widget1 = WidgetModel(
 //            type: .widget1,
 //            container: WidgetContainerModel(
@@ -62,8 +68,3 @@ class WidgetService {
 //                    deeplink: "Диплинк в кредиты"
 //            )
 //        )
-
-
-        completion([widget1,widget2, widget3])
-    }
-}
