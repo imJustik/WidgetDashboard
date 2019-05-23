@@ -3,26 +3,54 @@
 
 
 class WidgetService {
-    func fetchWidgets(completion: @escaping ([WidgetModel]) -> Void) {
-        let widget1 = WidgetModel(
-            type: .widget1,
-            container: WidgetContainerModel(
-                type: .basic,
-                title: "Переводы",
-                deeplink: "Диплинк в переводы"
-            )
-        )
+    func fetchWidgets(completion: @escaping ([WidgetModelType]) -> Void) {
+        let arr = [
+            ["id": "widget1",
+             "widgetData":
+                [
+                    "container": [
+                        "type": "basic",
+                        "title": "Переводы",
+                        "deeplink": "deeplink1"
+                    ]
+                ]
+            ],
 
-        let widget2 = WidgetModel(
-            type: .widget2,
-            container: WidgetContainerModel(
-                type: .basic,
-                title: "Кредиты",
-                deeplink: "Диплинк в кредиты"
-            )
-        )
+            ["id": "widget2",
+             "widgetData":
+                [
+                    "title": "Текст виджета 2"
+                ]
+            ],
 
-        let widget3 = WidgetModel(type: .widget3)
+            ["id": "widget3",
+             "widgetData":
+                [
+                    "button1Text": "Обновить первый",
+                    "button2Text": "Обновить оба"
+                ]
+            ],
+        ]
+
+//        let widget1 = WidgetModel(
+//            type: .widget1,
+//            container: WidgetContainerModel(
+//                type: .basic,
+//                title: "Переводы",
+//                deeplink: "Диплинк в переводы"
+//            )
+//        )
+//
+//        let widget2 = WidgetModel(
+//            type: .widget2,
+//            container: WidgetContainerModel(
+//                type: .basic,
+//                title: "Кредиты",
+//                deeplink: "Диплинк в кредиты"
+//            )
+//        )
+//
+//        let widget3 = WidgetModel(type: .widget3)
 
 
 // Расскоментировать, что бы создать widget3 с контейнером

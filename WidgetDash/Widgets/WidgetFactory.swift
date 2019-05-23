@@ -26,8 +26,8 @@ class WidgetFactory {
                 guard
                     let widget1Delegate = widgetOutcommingHandler as? Widget1ActionDelegate
                 else {  fatalError("Dashboard does not conform this protocol") }
-                let builder = Widget1Builder()
 
+                let builder = Widget1Builder()
                 let widget =  builder.build(
                     widgetActionDelegate: widget1Delegate,
                     widgetSubscriptionsHandler: widgetSubscriptionsHandler)
