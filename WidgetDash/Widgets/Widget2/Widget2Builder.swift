@@ -8,17 +8,15 @@
 
 import Foundation
 
-class Widget2Builder {
-    func build(
-        externalDelegate: Widget2ActionDelegate,
-        widgetSubscriptionsHandler: HandlesWidgetSubscriptions?) -> Widget2ViewController {
+class Widget2Builder: WidgetModuleBuilder {
+    override func build() -> WidgetViewController {
         let presenter = Widget2Presenter()
         let interactor = Widget2Interactor(presenter: presenter)
         let controller = Widget2ViewController(
             interactor: interactor,
             state: .loading,
-            externalDelegate: externalDelegate,
-            widgetSubscriber: widgetSubscriptionsHandler)
+            externalDelegate: actionDelegate,
+            widgetSubscriber: subscriptionsHandler)
         presenter.viewController = controller
         return controller
     }

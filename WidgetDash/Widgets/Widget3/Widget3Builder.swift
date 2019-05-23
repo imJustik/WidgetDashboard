@@ -8,14 +8,14 @@
 
 import Foundation
 
-class Widget3Builder {
-    func build(externalDelegate: Widget3ActionDelegate) -> Widget3ViewController {
+class Widget3Builder: WidgetModuleBuilder {
+    override func build() -> WidgetViewController {
         let presenter = Widget3Presenter()
         let interactor = Widget3Interactor(presenter: presenter)
         let controller = Widget3ViewController(
             interactor: interactor,
             state: .loading,
-            externalDelegate: externalDelegate)
+            externalDelegate: actionDelegate)
         presenter.viewController = controller
         return controller
     }

@@ -10,6 +10,55 @@
 
 import UIKit
 
+class WidgetModuleBuilder {
+    var actionDelegate: WidgetActionDelegate?
+    var subscriptionsHandler: HandlesWidgetSubscriptions?
+    func setActionDelegate(_ actionDelegate: WidgetActionDelegate?) -> Self {
+        self.actionDelegate = actionDelegate
+        return self
+    }
+    
+    func setSubscriptionsHandler(_ subscriptionsHandler: HandlesWidgetSubscriptions?) -> Self {
+        self.subscriptionsHandler = subscriptionsHandler
+        return self
+    }
+    
+    func build() -> WidgetViewController {
+        fatalError("build must override")
+    }
+    
+    required init() { }
+}
+
+class WidgetContainerBuilder<ModuleBuilder: WidgetModuleBuilder>: WidgetModuleBuilder {
+    var widgetModel: WidgetModel?
+    
+    func setWidget(_ widgetModel: WidgetModel) -> Self {
+        self.widgetModel = widgetModel
+        return self
+    }
+    
+    override func build() -> WidgetViewController {
+        guard
+            let model = widgetModel
+        else { fatalError("error") }
+        let simpleWidget = ModuleBuilder()
+            .setActionDelegate(self.actionDelegate)
+            .setSubscriptionsHandler(self.subscriptionsHandler)
+            .build()
+        if let container = model.container {
+            let container = WidgetContainerViewController(
+                widget: simpleWidget,
+                externalDelegate: self.actionDelegate,
+                title: container.title,
+                route: container.deeplink
+            )
+            
+            return container
+        }
+        return simpleWidget
+    }
+}
 
 class WidgetFactory {
     var widgets = [WidgetType]()
@@ -19,76 +68,40 @@ class WidgetFactory {
     /// Обрабатывает события, пришедшие из виджета
     var widgetOutcommingHandler: WidgetActionDelegate?
     
+    var firstWidgetBuilder: WidgetModuleBuilder = Widget1Builder()
+    var secondWidgetBuilder: WidgetModuleBuilder = Widget2Builder()
+    var thirsWidgetBuilder: WidgetModuleBuilder = Widget3Builder()
+
     func getWidgets(widgetModels: [WidgetModel]) -> [WidgetViewController] {
         return widgetModels.compactMap {
             switch $0.type {
             case .widget1:
                 guard
                     let widget1Delegate = widgetOutcommingHandler as? Widget1ActionDelegate
-                else {  fatalError("Dashboard does not conform this protocol") }
-                let builder = Widget1Builder()
-
-                let widget =  builder.build(
-                    widgetActionDelegate: widget1Delegate,
-                    widgetSubscriptionsHandler: widgetSubscriptionsHandler)
-
-                if let container = $0.container {
-                    let container = WidgetContainerViewController(
-                        widget: widget,
-                        externalDelegate: widget1Delegate,
-                        title: container.title,
-                        route: container.deeplink
-                    )
-                    return container
-                }
-
-                return widget
-
+                else { fatalError("Dashboard does not conform this protocol") }
+                return WidgetContainerBuilder<Widget1Builder>()
+                    .setWidget($0)
+                    .setActionDelegate(widget1Delegate)
+                    .setSubscriptionsHandler(widgetSubscriptionsHandler)
+                    .build()
             case .widget2:
                 guard
                     let widget2Delegate = widgetOutcommingHandler as? Widget2ActionDelegate
                 else { fatalError("Dashboard does not conform this protocol") }
-
-                let builder = Widget2Builder()
-                let widget = builder.build(
-                    externalDelegate: widget2Delegate,
-                    widgetSubscriptionsHandler: widgetSubscriptionsHandler)
-
-
-                if let container = $0.container {
-                    let container = WidgetContainerViewController(
-                        widget: widget,
-                        externalDelegate: widget2Delegate,
-                        title: container.title,
-                        route: container.deeplink
-                    )
-
-                    return container
-                }
-                return widget
+                return WidgetContainerBuilder<Widget2Builder>()
+                    .setWidget($0)
+                    .setActionDelegate(widget2Delegate)
+                    .setSubscriptionsHandler(widgetSubscriptionsHandler)
+                    .build()
 
             case .widget3:
                 guard
                     let widget3Delegate = widgetOutcommingHandler as? Widget3ActionDelegate
                 else { fatalError("Dashboard does not conform this protocol") }
-
-                let builder = Widget3Builder()
-
-                let widget = builder.build(
-                    externalDelegate: widget3Delegate)
-
-
-                if let container = $0.container {
-                    let container = WidgetContainerViewController(
-                        widget: widget,
-                        externalDelegate: widget3Delegate,
-                        title: container.title,
-                        route: container.deeplink
-                    )
-                    return container
-                }
-
-                return widget
+                return WidgetContainerBuilder<Widget2Builder>()
+                    .setWidget($0)
+                    .setActionDelegate(widget3Delegate)
+                    .build()
             }
         }
     }

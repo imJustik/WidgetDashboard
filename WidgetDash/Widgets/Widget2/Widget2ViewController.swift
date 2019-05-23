@@ -31,7 +31,7 @@ class Widget2ViewController: WidgetViewController {
     init(
         interactor: Widget2Interactor,
         state: State,
-        externalDelegate: WidgetActionDelegate,
+        externalDelegate: WidgetActionDelegate?,
         widgetSubscriber: HandlesWidgetSubscriptions?,
         uid: UUID = UUID()) {
         self.uid = uid

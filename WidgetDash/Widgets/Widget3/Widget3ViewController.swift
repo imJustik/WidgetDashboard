@@ -24,7 +24,7 @@ class Widget3ViewController: WidgetViewController {
 
     init(interactor: Widget3Interactor,
          state: State,
-         externalDelegate: WidgetActionDelegate,
+         externalDelegate: WidgetActionDelegate?,
          uid: UUID = UUID()) {
         self.uid = uid
         self.externalDelegate = externalDelegate

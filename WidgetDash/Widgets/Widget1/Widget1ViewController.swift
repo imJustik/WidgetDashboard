@@ -30,7 +30,7 @@ class Widget1ViewController: WidgetViewController {
 
     init(interactor: Widget1Interactor,
          state: State,
-         externalDelegate: WidgetActionDelegate,
+         externalDelegate: WidgetActionDelegate?,
          widgetSubscriber: HandlesWidgetSubscriptions?) {
         
         self.externalDelegate = externalDelegate

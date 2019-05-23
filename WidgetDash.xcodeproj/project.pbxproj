@@ -160,10 +160,10 @@
 		454836152278B61B0024FF11 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
-				45CF8E652289792D00D6CE9C /* WidgetProvider.swift */,
 				45F26A0E2285B5190097CFC6 /* Widget1 */,
 				45F26A072285B5190097CFC6 /* Widget2 */,
 				45F26A002285B5190097CFC6 /* Widget3 */,
+				45CF8E652289792D00D6CE9C /* WidgetProvider.swift */,
 				454836162278B6390024FF11 /* Widget.swift */,
 				454836212278B92E0024FF11 /* WidgetFactory.swift */,
 				454B7E3D22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift */,

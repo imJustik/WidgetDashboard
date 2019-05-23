@@ -3,17 +3,15 @@
 
 import Foundation
 
-class Widget1Builder {
-    func build(
-        widgetActionDelegate: Widget1ActionDelegate,
-        widgetSubscriptionsHandler: HandlesWidgetSubscriptions?) -> Widget1ViewController {
+class Widget1Builder: WidgetModuleBuilder {
+    override func build() -> WidgetViewController {
         let presenter = Widget1Presenter()
         let interactor = Widget1Interactor(presenter: presenter)
         let controller = Widget1ViewController(
             interactor: interactor,
             state: .loading,
-            externalDelegate: widgetActionDelegate,
-            widgetSubscriber: widgetSubscriptionsHandler)
+            externalDelegate: self.actionDelegate,
+            widgetSubscriber: self.subscriptionsHandler)
         presenter.viewController = controller
         return controller
     }
