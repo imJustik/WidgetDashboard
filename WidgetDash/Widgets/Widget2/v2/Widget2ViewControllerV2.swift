@@ -8,14 +8,13 @@
 
 import UIKit
 
-class Widget2ViewController: WidgetViewController {
-    var uid: UUID
-    
+class Widget2ViewControllerV2: WidgetViewController {
+    let model: Widget2Model.v2
     weak var externalDelegate: WidgetActionDelegate?
     let widgetSubscriber: HandlesWidgetSubscriptions?
 
-    let interactor: Widget2Interactor
-    lazy var contentView = view as? Widget2View
+    let interactor: Widget2InteractorV2
+    lazy var contentView = view as? Widget2ViewV2
     var state: State {
         didSet(oldState) {
             switch (oldState, state) {
@@ -23,18 +22,19 @@ class Widget2ViewController: WidgetViewController {
                 contentView?.show(state: .loading)
                 fetchData()
             case let (_, .display(data)):
-                contentView?.show(state: .display(data))
+                contentView?.show(state: .display(title: data))
             }
         }
     }
 
     init(
-        interactor: Widget2Interactor,
+        interactor: Widget2InteractorV2,
         state: State,
         externalDelegate: WidgetActionDelegate,
         widgetSubscriber: HandlesWidgetSubscriptions?,
-        uid: UUID = UUID()) {
-        self.uid = uid
+        model: Widget2Model.v2
+        ) {
+        self.model = model
         self.externalDelegate = externalDelegate
         self.widgetSubscriber = widgetSubscriber
         self.interactor = interactor
@@ -53,13 +53,17 @@ class Widget2ViewController: WidgetViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         set(state: state)
-        widgetSubscriber?.subscribe(eventType: .reloadBoth, uid: uid) { [weak self] in
+        widgetSubscriber?.subscribe(eventType: .reloadBoth, uid: model.uid) { [weak self] in
             self?.set(state: .loading)
         }
     }
 
     override func loadView() {
-        view = Widget2View()
+        view = Widget2ViewV2(
+            title: model.title,
+            backgroundColor: model.backgroundColor,
+            textColor: model.textColor
+        )
     }
 
     func fetchData() {
@@ -67,22 +71,20 @@ class Widget2ViewController: WidgetViewController {
         interactor.fetchData(request: request)
     }
 
-    func display(viewModel: Widget2Flow.FetchData.ViewModel) {
+    func display(viewModel: Widget2FlowV2.FetchData.ViewModel) {
         self.state = viewModel.state
     }
 }
 
-extension Widget2ViewController {
+extension Widget2ViewControllerV2 {
     enum State {
         case loading
-        case display(String)
+        case display(title: String)
     }
 }
 
-extension Widget2ViewController: Reloadable {
+extension Widget2ViewControllerV2: Reloadable {
     func reload() {
         set(state: .loading)
     }
 }
-
-protocol Widget2ActionDelegate: WidgetActionDelegate {}

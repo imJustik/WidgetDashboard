@@ -4,25 +4,23 @@ protocol WidgetContainerDelegate: AnyObject {
     func navigate(to route: String)
 }
 
-typealias WidgetViewController = Widget & UIViewController
-
 class WidgetContainerViewController: WidgetViewController {
     var externalDelegate: WidgetActionDelegate?
-    let uid: UUID = UUID()
+    let uid: String
 
     var containerView: WidgetContainerView
-    let widget: WidgetViewController
+    let widgets: [WidgetViewController]
 
     var route: String?
 
-    init(widget: WidgetViewController,
+    init(widgets: [WidgetViewController],
          externalDelegate: WidgetActionDelegate? = nil,
-         title: String,
-         route: String? = nil) {
-        self.widget = widget
+         model: WidgetContainerModel) {
+        self.widgets = widgets
         self.externalDelegate = externalDelegate
-        self.route = route
-        containerView = WidgetContainerView(title: title, needAction: route != nil)
+        self.route = model.deeplink
+        self.uid = model.uid
+        containerView = WidgetContainerView(title: model.title, needAction: route != nil)
         super.init(nibName: nil, bundle: nil)
         containerView.delegate = self
     }
@@ -33,9 +31,12 @@ class WidgetContainerViewController: WidgetViewController {
 
     override func loadView() {
         view = containerView
-        addChild(widget)
-        widget.didMove(toParent: self)
-        containerView.add(view: widget.view)
+        widgets.forEach {
+            addChild($0)
+            $0.didMove(toParent: self)
+            containerView.add(view: $0.view)
+        }
+
     }
 }
 
@@ -47,7 +48,9 @@ extension WidgetContainerViewController: ContainerViewDelegate {
 }
 extension WidgetContainerViewController: Reloadable {
     func reload() {
-        guard let widget = widget as? Reloadable else { return }
-        widget.reload()
+        widgets.forEach {
+            guard let widget = $0 as? Reloadable else { return }
+            widget.reload()
+        }
     }
 }

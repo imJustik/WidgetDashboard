@@ -10,7 +10,7 @@ protocol ContainerViewDelegate: AnyObject {
 
 class WidgetContainerView: UIControl {
     weak var delegate: ContainerViewDelegate?
-    var widgetView = UIView()
+    var widgetViews: [UIView] = []
 
     lazy var headerView = UIView()
     let hasAction: Bool
@@ -57,21 +57,23 @@ class WidgetContainerView: UIControl {
     }
 
     @objc func headerButtonTapped(_ sender:UIButton!) {
-        if widgetView.isHidden {
-            UIView.animate(withDuration: 0.15) { [weak self] in
-                self?.widgetView.alpha = 1
-                self?.widgetView.isHidden = false
-            }
-        } else {
-            UIView.animate(withDuration: 0.15){ [weak self] in
-                self?.widgetView.alpha = 0
-                self?.widgetView.isHidden = true
+        widgetViews.forEach { widget in
+            if widget.isHidden {
+                UIView.animate(withDuration: 0.15) {
+                    widget.alpha = 1
+                    widget.isHidden = false
+                }
+            } else {
+                UIView.animate(withDuration: 0.15) {
+                    widget.alpha = 0
+                    widget.isHidden = true
+                }
             }
         }
     }
 
     func add(view: UIView) {
-        widgetView = view
+        widgetViews.append(view)
         stackView.addArrangedSubview(view)
     }
 

@@ -16,16 +16,16 @@ enum WidgetEventType: CaseIterable {
 
 /// Управляет подписками виджетов
 protocol HandlesWidgetSubscriptions {
-    func subscribe(eventType: WidgetEventType, uid: UUID, handler: @escaping () -> Void)
+    func subscribe(eventType: WidgetEventType, uid: String, handler: @escaping () -> Void)
     func fireSubscriptions(for event: WidgetEventType)
 }
 
 
 class WidgetSubscriptionsHandler: HandlesWidgetSubscriptions {
-    var reloadFacesSubscriptions: [UUID: (() -> Void)] = [:]
-    var reloadBothSubscriptions: [UUID: (() -> Void)] = [:]
+    var reloadFacesSubscriptions: [String: (() -> Void)] = [:]
+    var reloadBothSubscriptions: [String: (() -> Void)] = [:]
 
-    func subscribe(eventType: WidgetEventType, uid: UUID, handler: @escaping () -> Void) {
+    func subscribe(eventType: WidgetEventType, uid: String, handler: @escaping () -> Void) {
         switch eventType {
         case .reloadFaces:
             reloadFacesSubscriptions[uid] = handler
@@ -34,7 +34,7 @@ class WidgetSubscriptionsHandler: HandlesWidgetSubscriptions {
         }
     }
 
-    func unsubscribe(eventType: WidgetEventType, uid: UUID) {
+    func unsubscribe(eventType: WidgetEventType, uid: String) {
         switch eventType {
         case .reloadFaces:
             reloadFacesSubscriptions[uid] = nil
@@ -43,7 +43,7 @@ class WidgetSubscriptionsHandler: HandlesWidgetSubscriptions {
         }
     }
 
-    func unsubscribe(uid: UUID) {
+    func unsubscribe(uid: String) {
         WidgetEventType.allCases.forEach {
             unsubscribe(eventType: $0, uid: uid)
         }

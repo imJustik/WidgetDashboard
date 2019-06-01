@@ -4,8 +4,8 @@
 import UIKit
 
 class Widget3ViewController: WidgetViewController {
-    var uid: UUID
-
+    let uid: String
+    let model: Widget3Model
     let interactor: Widget3Interactor
     lazy var contentView = view as? Widget3View
     weak var externalDelegate: WidgetActionDelegate?
@@ -16,8 +16,8 @@ class Widget3ViewController: WidgetViewController {
             case (_, .loading):
                 contentView?.show(state: .loading)
                 fetchData()
-            case let (_, .display(data)):
-                contentView?.show(state: .display(data))
+            case (_, .display):
+                contentView?.show(state: .display)
             }
         }
     }
@@ -25,8 +25,9 @@ class Widget3ViewController: WidgetViewController {
     init(interactor: Widget3Interactor,
          state: State,
          externalDelegate: WidgetActionDelegate,
-         uid: UUID = UUID()) {
-        self.uid = uid
+         model: Widget3Model) {
+        uid = model.uid
+        self.model = model
         self.externalDelegate = externalDelegate
         self.interactor = interactor
         self.state = state
@@ -43,7 +44,11 @@ class Widget3ViewController: WidgetViewController {
     }
 
     override func loadView() {
-        view = Widget3View(actionDelegate: self)
+        view = Widget3View(
+            actionDelegate: self,
+            button1Title: model.button1Text,
+            button2Title: model.button2Text
+        )
     }
 
     func set(state: State) {
@@ -63,7 +68,7 @@ class Widget3ViewController: WidgetViewController {
 extension Widget3ViewController {
     enum State {
         case loading
-        case display(String)
+        case display
     }
 }
 

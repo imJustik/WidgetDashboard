@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Widget2Flow {
+enum Widget2FlowV2 {
     enum FetchData {
         struct Request  { }
 
@@ -17,7 +17,7 @@ enum Widget2Flow {
         }
 
         struct ViewModel {
-            var state: Widget2ViewController.State
+            var state: Widget2ViewControllerV2.State
         }
     }
 }

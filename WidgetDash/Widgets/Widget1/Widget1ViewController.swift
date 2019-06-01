@@ -4,7 +4,7 @@
 import UIKit
 
 class Widget1ViewController: WidgetViewController {
-    let uid: UUID = UUID()
+    let uid: String = "w1"
 
     weak var externalDelegate: WidgetActionDelegate?
     let widgetSubscriber: HandlesWidgetSubscriptions?

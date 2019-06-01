@@ -5,7 +5,7 @@ import Foundation
 
 class WidgetDataStore {
     static let shared = WidgetDataStore()
-    var widgets: [WidgetModelType] = []
+    var widgets: [WidgetType.ModelType] = []
 
     private init() {}
 }

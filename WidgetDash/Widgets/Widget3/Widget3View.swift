@@ -39,11 +39,17 @@ class Widget3View: UIView {
 
     let appearance = Appearance()
 
-    init(actionDelegate: Widget3Delegate) {
+    init(
+        actionDelegate: Widget3Delegate,
+        button1Title: String,
+        button2Title: String) {
         super.init(frame: CGRect.zero)
         addSubviews()
         makeConstraints()
         self.actionDelegate = actionDelegate
+
+        button1.setTitle(button1Title, for: .normal)
+        button2.setTitle(button2Title, for: .normal)
 
         buttonsView.isHidden = true
         textLabel.isHidden = true

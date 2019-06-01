@@ -3,68 +3,103 @@
 
 
 class WidgetService {
-    func fetchWidgets(completion: @escaping ([WidgetModelType]) -> Void) {
-        let arr = [
-            ["id": "widget1",
-             "widgetData":
-                [
-                    "container": [
-                        "type": "basic",
-                        "title": "Переводы",
-                        "deeplink": "deeplink1"
-                    ]
+    func fetchWidgets(completion: @escaping ([WidgetType.ModelType]) -> Void) {
+        let json = [
+            ["type": "widget1",
+             "content": [
+                "version": 1,
+                "data": [
+                    "uid":"w1"
+                ]
                 ]
             ],
+            ["type": "container",
+             "content": [
+                "version": 1,
+                "data": [
+                    "uid":"cnr1",
+                    "title": "Кредиты",
+                    "deeplink": "alfa:///payments"
+                ],
+                "widgets": [
+                    ["type": "widget2",
+                     "content": [
+                        "version": 1,
+                        "data": [
+                            "uid":"some3",
+                            "title": "Кредитная карта"
+                        ]
+                        ]
+                    ],
 
-            ["id": "widget2",
-             "widgetData":
-                [
-                    "title": "Текст виджета 2"
+                    ["type": "widget2",
+                     "content": [
+                        "version": 1,
+                        "data": [
+                            "uid":"some1",
+                            "title": "Потребительский"
+                        ]
+                        ]
+                    ],
+                    ["type": "widget2",
+                     "content": [
+                        "version": 1,
+                        "data": [
+                            "uid":"some2",
+                            "title": "Ипотека"
+                        ]
+                        ]
+                    ],
+                    ["type": "container",
+                     "content": [
+                        "version": 1,
+                        "data": [
+                            "uid":"cnr2",
+                            "title": "В другом банке"
+                        ],
+                        "widgets": [
+                            ["type": "widget2",
+                             "content": [
+                                "version": 2,
+                                "data": [
+                                    "uid":"some11",
+                                    "title": "Сбербанк",
+                                    "backgroundColor": "#A0D77EFF",
+                                    "textColor": "#FFFFFFFF"
+                                ]
+                                ]
+                            ],
+                            ["type": "widget2",
+                             "content": [
+                                "version": 2,
+                                "data": [
+                                    "uid":"some22",
+                                    "title": "Газпромбанк",
+                                    "backgroundColor": "#7E97D7FF",
+                                    "textColor": "#FFFFFFFF"
+                                ]
+                                ]
+                            ]
+                        ]
+                        ]
+                    ],
+                ]
                 ]
             ],
-
-            ["id": "widget3",
-             "widgetData":
-                [
+            ["type": "widget3",
+             "content": [
+                "version": 1,
+                "data": [
+                    "uid":"w1",
                     "button1Text": "Обновить первый",
-                    "button2Text": "Обновить оба"
+                    "button2Text": "Обновить все"
                 ]
-            ],
+                ]
+            ]
         ]
 
         let translator = WidgetTranslator()
-        completion(translator.translateForm(array: arr))
+        completion(translator.translateForm(array: json))
     }
 }
 
-
-//        let widget1 = WidgetModel(
-//            type: .widget1,
-//            container: WidgetContainerModel(
-//                type: .basic,
-//                title: "Переводы",
-//                deeplink: "Диплинк в переводы"
-//            )
-//        )
-//
-//        let widget2 = WidgetModel(
-//            type: .widget2,
-//            container: WidgetContainerModel(
-//                type: .basic,
-//                title: "Кредиты",
-//                deeplink: "Диплинк в кредиты"
-//            )
-//        )
-//
-//        let widget3 = WidgetModel(type: .widget3)
-
-
-// Расскоментировать, что бы создать widget3 с контейнером
-//        let widget3 = WidgetModel(
-//            type: .widget3,
-//            container: WidgetContainerModel(
-//                    type: .basic,
-//                    title: "Кредиты",
-//                    deeplink: "Диплинк в кредиты"
-//            )
-//        )
