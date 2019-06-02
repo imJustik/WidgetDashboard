@@ -7,7 +7,6 @@ protocol Widget3Delegate: AnyObject {
 
 extension Widget3View {
     struct Appearance {
-        let title = "Ебать виджет"
         let viewHeigth: CGFloat = 56
         let inset: CGFloat = 12
     }
@@ -31,12 +30,7 @@ class Widget3View: UIView {
         return button
     }()
 
-    lazy var textLabel: UILabel = {
-        let label = UILabel()
-        label.text = appearance.title
-        return label
-    }()
-
+    lazy var textLabel = UILabel()
     let appearance = Appearance()
 
     init(

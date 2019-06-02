@@ -48,13 +48,17 @@ class WidgetTranslator: Translator {
     func translateToJson(model: WidgetType.ModelType) -> [String : Any] {
         switch model {
         case let .widget1(model):
-            return widget1Translator.translateToJson(model: model)
+            let content = widget1Translator.translateToJson(model: model)
+            return [DTOKeys.type.rawValue: WidgetType.widget1.rawValue, DTOKeys.content.rawValue: content]
         case let .widget2(model):
-            return widget2Translator.translateToJson(model: model)
+            let content = widget2Translator.translateToJson(model: model)
+            return [DTOKeys.type.rawValue: WidgetType.widget2.rawValue, DTOKeys.content.rawValue: content]
         case let .widget3(model):
-            return widget3Translator.translateToJson(model: model)
+            let content = widget3Translator.translateToJson(model: model)
+            return [DTOKeys.type.rawValue: WidgetType.widget3.rawValue, DTOKeys.content.rawValue: content]
         case let .container(model):
-            return widgetContainerTranslator.translateToJson(model: model)
+            let content = widgetContainerTranslator.translateToJson(model: model)
+            return [DTOKeys.type.rawValue: WidgetType.container.rawValue, DTOKeys.content.rawValue: content]
         }
     }
 }
