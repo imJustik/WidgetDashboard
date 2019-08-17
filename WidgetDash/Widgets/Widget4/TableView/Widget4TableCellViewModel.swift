@@ -1,9 +1,15 @@
-//
-//  Widget4TableCellViewModel.swift
-//  WidgetDash
-//
-//  Created by Илья Кузнецов on 17/08/2019.
-//  Copyright © 2019 Илья Кузнецов. All rights reserved.
-//
 
-import Foundation
+import UIKit
+
+enum Widget4CellViewModel {
+    case account(Widget4AccountCellViewModel)
+    case expand(Widget4ExpandCellViewModel)
+}
+
+struct Widget4AccountCellViewModel {
+    let title: String
+}
+
+struct Widget4ExpandCellViewModel {
+    let title: String
+}

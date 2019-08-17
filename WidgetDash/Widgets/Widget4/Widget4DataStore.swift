@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+
+class Widget4DataStore {
+    var labels: [String] = []
+}

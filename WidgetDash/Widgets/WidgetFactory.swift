@@ -10,8 +10,10 @@ class WidgetFactory {
     /// Испольльзуют виджеты для подписки на события
     var widgetSubscriptionsHandler: HandlesWidgetSubscriptions?
     /// Обрабатывает события, пришедшие из виджета
-    var widgetOutcommingHandler: WidgetActionDelegate?
-    
+    var widgetOutcommingHandler: WidgetActionDelegate? // dashboard
+
+    // [.widget2(.v1(model), .widget1(model), .widget3(model)]
+
     func getWidgets(widgetModels: [WidgetType.ModelType]) -> [WidgetViewController] {
         return widgetModels.compactMap {
             switch $0 {
@@ -45,6 +47,17 @@ class WidgetFactory {
                 let builder = Widget3Builder().set(model: model)
                 let widget = builder.build(
                     externalDelegate: widget3Delegate)
+                return widget
+
+            case .widget4:
+                guard
+                    let widget4Delegate = widgetOutcommingHandler as? Widget4ActionDelegate
+                    else { fatalError("Dashboard does not conform this protocol") }
+
+                let builder = Widget4Builder()
+                let widget = builder.build(
+                    widgetActionDelegate: widget4Delegate,
+                    widgetSubscriptionsHandler: widgetSubscriptionsHandler)
                 return widget
 
             case let .container(model):

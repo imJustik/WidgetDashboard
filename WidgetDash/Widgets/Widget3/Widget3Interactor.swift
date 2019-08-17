@@ -16,5 +16,4 @@ class Widget3Interactor {
             self?.presenter.presentData(response: response)
         }
     }
-    
 }

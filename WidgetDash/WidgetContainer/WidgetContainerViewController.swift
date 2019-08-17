@@ -2,7 +2,9 @@ import UIKit
 
 protocol WidgetContainerDelegate: AnyObject {
     func navigate(to route: String)
+    func layout()
 }
+
 
 class WidgetContainerViewController: WidgetViewController {
     var externalDelegate: WidgetActionDelegate?
@@ -44,6 +46,10 @@ extension WidgetContainerViewController: ContainerViewDelegate {
     func tapButton() {
         guard let route = route else { return }
         (externalDelegate as? WidgetContainerDelegate)?.navigate(to: route)
+    }
+
+    func layout() {
+
     }
 }
 extension WidgetContainerViewController: Reloadable {

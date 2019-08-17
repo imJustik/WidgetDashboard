@@ -5,11 +5,11 @@
 class WidgetService {
     func fetchWidgets(completion: @escaping ([WidgetType.ModelType]) -> Void) {
         let json = [
-            ["type": "widget1",
+            ["type": "widget4",
              "content": [
                 "version": 1,
                 "data": [
-                    "uid":"w1"
+                    "uid":"w4"
                 ]
                 ]
             ],
@@ -19,9 +19,11 @@ class WidgetService {
                 "data": [
                     "uid":"cnr1",
                     "title": "Кредиты",
-                    "deeplink": "alfa:///payments"
+                    "deeplink": "hello world"
                 ],
+
                 "widgets": [
+
                     ["type": "widget2",
                      "content": [
                         "version": 1,
@@ -31,7 +33,7 @@ class WidgetService {
                         ]
                         ]
                     ],
-
+                    
                     ["type": "widget2",
                      "content": [
                         "version": 1,

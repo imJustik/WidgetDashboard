@@ -18,6 +18,8 @@ class WidgetTranslator: Translator {
     let widget2Translator = Widget2VersionTranslator()
 
     let widget3Translator = Widget3Translator()
+    let widget4Translator = Widget4Translator()
+
     lazy var widgetContainerTranslator = WidgetContainerTranslator(widgetTranslator: self)
 
     func translateForm(array: [[String: Any]]) -> [WidgetType.ModelType] {
@@ -31,7 +33,6 @@ class WidgetTranslator: Translator {
         switch type {
         case .widget1:
             let widgetModel = widget1Translator.translate(from: meta)
-            print(translateToJson(model: .widget1(widgetModel)))
             return .widget1(widgetModel)
         case .widget2:
             let widgetModel = widget2Translator.translate(from: meta)
@@ -39,11 +40,19 @@ class WidgetTranslator: Translator {
         case .widget3:
             let widgetModel = widget3Translator.translate(from: meta)
             return .widget3(widgetModel)
+        case .widget4:
+            let widgetModel = widget4Translator.translate(from: meta)
+            return .widget4(widgetModel)
         case .container:
             let widget = widgetContainerTranslator.translate(from: meta)
             return .container(widget)
         }
     }
+
+    //(.widget2(.v1(model))
+    //(.widget1(model))
+
+   // [.widget2(.v1(model), .widget1(model), .widget3(model)]
 
     func translateToJson(model: WidgetType.ModelType) -> [String : Any] {
         switch model {
@@ -56,6 +65,9 @@ class WidgetTranslator: Translator {
         case let .widget3(model):
             let content = widget3Translator.translateToJson(model: model)
             return [DTOKeys.type.rawValue: WidgetType.widget3.rawValue, DTOKeys.content.rawValue: content]
+        case let .widget4(model):
+             let content = widget4Translator.translateToJson(model: model)
+            return [DTOKeys.type.rawValue: WidgetType.widget4.rawValue, DTOKeys.content.rawValue: content]
         case let .container(model):
             let content = widgetContainerTranslator.translateToJson(model: model)
             return [DTOKeys.type.rawValue: WidgetType.container.rawValue, DTOKeys.content.rawValue: content]

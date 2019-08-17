@@ -16,7 +16,7 @@ class Widget2Interactor {
     }
 
     func fetchData(request: Widget2Flow.FetchData.Request) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             let random = String(Int.random(in: 1..<1000))
             let response = Widget2Flow.FetchData.Response(result: random)
             self?.presenter.presentData(response: response)

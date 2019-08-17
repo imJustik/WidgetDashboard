@@ -34,6 +34,21 @@
 		4551B711229D6F1300CEAB59 /* Widget3Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4551B710229D6F1300CEAB59 /* Widget3Translator.swift */; };
 		4551B713229D6FC200CEAB59 /* WidgetContaierTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4551B712229D6FC200CEAB59 /* WidgetContaierTranslator.swift */; };
 		4551B715229D6FCE00CEAB59 /* WidgetContainerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4551B714229D6FCE00CEAB59 /* WidgetContainerModel.swift */; };
+		456A02F42307E400009B7105 /* Widget4TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A02F32307E400009B7105 /* Widget4TableCell.swift */; };
+		456A02F62307E50D009B7105 /* Widget4TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A02F52307E50D009B7105 /* Widget4TableViewDataSource.swift */; };
+		456A02F82307F0F9009B7105 /* Widget4TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A02F72307F0F9009B7105 /* Widget4TableView.swift */; };
+		456A02FA2307F2E0009B7105 /* Widget4ExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A02F92307F2E0009B7105 /* Widget4ExpandCell.swift */; };
+		456A0A1023080796009B7105 /* Widget4TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A0A0F23080796009B7105 /* Widget4TableViewDelegate.swift */; };
+		456A0A12230808C4009B7105 /* Widget4TableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A0A11230808C4009B7105 /* Widget4TableCellViewModel.swift */; };
+		456A0A1423080FCA009B7105 /* Widget4DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A0A1323080FCA009B7105 /* Widget4DataStore.swift */; };
+		456AFBD62307D9BD009B7105 /* Widget4Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBCE2307D9BD009B7105 /* Widget4Model.swift */; };
+		456AFBD72307D9BD009B7105 /* Widget4DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBCF2307D9BD009B7105 /* Widget4DataFlow.swift */; };
+		456AFBD82307D9BD009B7105 /* Widget4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBD02307D9BD009B7105 /* Widget4ViewController.swift */; };
+		456AFBD92307D9BD009B7105 /* Widget4Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBD12307D9BD009B7105 /* Widget4Presenter.swift */; };
+		456AFBDA2307D9BD009B7105 /* Widget4Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBD22307D9BD009B7105 /* Widget4Translator.swift */; };
+		456AFBDB2307D9BD009B7105 /* Widget4Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBD32307D9BD009B7105 /* Widget4Interactor.swift */; };
+		456AFBDC2307D9BD009B7105 /* Widget4Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBD42307D9BD009B7105 /* Widget4Builder.swift */; };
+		456AFBDE2307DA91009B7105 /* Widget4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBDD2307DA91009B7105 /* Widget4View.swift */; };
 		457DA8EB22A02743001250AA /* Widget2VersionTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457DA8EA22A02743001250AA /* Widget2VersionTranslator.swift */; };
 		457DA8F722A1493F001250AA /* Widget2ViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457DA8F122A1493F001250AA /* Widget2ViewControllerV2.swift */; };
 		457DA8F822A1493F001250AA /* Widget2InteractorV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457DA8F222A1493F001250AA /* Widget2InteractorV2.swift */; };
@@ -111,6 +126,21 @@
 		4551B710229D6F1300CEAB59 /* Widget3Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget3Translator.swift; sourceTree = "<group>"; };
 		4551B712229D6FC200CEAB59 /* WidgetContaierTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContaierTranslator.swift; sourceTree = "<group>"; };
 		4551B714229D6FCE00CEAB59 /* WidgetContainerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContainerModel.swift; sourceTree = "<group>"; };
+		456A02F32307E400009B7105 /* Widget4TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4TableCell.swift; sourceTree = "<group>"; };
+		456A02F52307E50D009B7105 /* Widget4TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4TableViewDataSource.swift; sourceTree = "<group>"; };
+		456A02F72307F0F9009B7105 /* Widget4TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4TableView.swift; sourceTree = "<group>"; };
+		456A02F92307F2E0009B7105 /* Widget4ExpandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4ExpandCell.swift; sourceTree = "<group>"; };
+		456A0A0F23080796009B7105 /* Widget4TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4TableViewDelegate.swift; sourceTree = "<group>"; };
+		456A0A11230808C4009B7105 /* Widget4TableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4TableCellViewModel.swift; sourceTree = "<group>"; };
+		456A0A1323080FCA009B7105 /* Widget4DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4DataStore.swift; sourceTree = "<group>"; };
+		456AFBCE2307D9BD009B7105 /* Widget4Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget4Model.swift; sourceTree = "<group>"; };
+		456AFBCF2307D9BD009B7105 /* Widget4DataFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget4DataFlow.swift; sourceTree = "<group>"; };
+		456AFBD02307D9BD009B7105 /* Widget4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget4ViewController.swift; sourceTree = "<group>"; };
+		456AFBD12307D9BD009B7105 /* Widget4Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget4Presenter.swift; sourceTree = "<group>"; };
+		456AFBD22307D9BD009B7105 /* Widget4Translator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget4Translator.swift; sourceTree = "<group>"; };
+		456AFBD32307D9BD009B7105 /* Widget4Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget4Interactor.swift; sourceTree = "<group>"; };
+		456AFBD42307D9BD009B7105 /* Widget4Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget4Builder.swift; sourceTree = "<group>"; };
+		456AFBDD2307DA91009B7105 /* Widget4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4View.swift; sourceTree = "<group>"; };
 		457DA8EA22A02743001250AA /* Widget2VersionTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget2VersionTranslator.swift; sourceTree = "<group>"; };
 		457DA8F122A1493F001250AA /* Widget2ViewControllerV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget2ViewControllerV2.swift; sourceTree = "<group>"; };
 		457DA8F222A1493F001250AA /* Widget2InteractorV2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget2InteractorV2.swift; sourceTree = "<group>"; };
@@ -170,6 +200,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4500E0C822E79879004B2511 /* Widget4 */ = {
+			isa = PBXGroup;
+			children = (
+				456AFBD42307D9BD009B7105 /* Widget4Builder.swift */,
+				456AFBCF2307D9BD009B7105 /* Widget4DataFlow.swift */,
+				456AFBD32307D9BD009B7105 /* Widget4Interactor.swift */,
+				456AFBCE2307D9BD009B7105 /* Widget4Model.swift */,
+				456AFBD12307D9BD009B7105 /* Widget4Presenter.swift */,
+				456AFBD22307D9BD009B7105 /* Widget4Translator.swift */,
+				456AFBD02307D9BD009B7105 /* Widget4ViewController.swift */,
+				456AFBCC2307D90E009B7105 /* TableView */,
+				456AFBDD2307DA91009B7105 /* Widget4View.swift */,
+				456A0A1323080FCA009B7105 /* Widget4DataStore.swift */,
+			);
+			path = Widget4;
+			sourceTree = "<group>";
+		};
 		45281AD8228476FD002FD08B /* WidgetContainer */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +265,7 @@
 		454836152278B61B0024FF11 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				4500E0C822E79879004B2511 /* Widget4 */,
 				45CF8E652289792D00D6CE9C /* WidgetProvider.swift */,
 				45F26A0E2285B5190097CFC6 /* Widget1 */,
 				45F26A072285B5190097CFC6 /* Widget2 */,
@@ -246,6 +294,19 @@
 				45281AE922848C7D002FD08B /* DashboardScrollView.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		456AFBCC2307D90E009B7105 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				456A02F32307E400009B7105 /* Widget4TableCell.swift */,
+				456A02F52307E50D009B7105 /* Widget4TableViewDataSource.swift */,
+				456A02F72307F0F9009B7105 /* Widget4TableView.swift */,
+				456A02F92307F2E0009B7105 /* Widget4ExpandCell.swift */,
+				456A0A0F23080796009B7105 /* Widget4TableViewDelegate.swift */,
+				456A0A11230808C4009B7105 /* Widget4TableCellViewModel.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		457DA8EF22A148F7001250AA /* v1 */ = {
@@ -500,41 +561,54 @@
 				457DA8EB22A02743001250AA /* Widget2VersionTranslator.swift in Sources */,
 				454836062278B4D50024FF11 /* DashboardController.swift in Sources */,
 				457DA8F822A1493F001250AA /* Widget2InteractorV2.swift in Sources */,
+				456A02F62307E50D009B7105 /* Widget4TableViewDataSource.swift in Sources */,
 				4551B70F229D6F0A00CEAB59 /* Widget2Translator.swift in Sources */,
 				45F26A1C2285B5190097CFC6 /* Widget2Interactor.swift in Sources */,
 				45939A0A22A31EAA00B023CA /* UIColor+ HEX.swift in Sources */,
+				456AFBDE2307DA91009B7105 /* Widget4View.swift in Sources */,
 				457DA8F722A1493F001250AA /* Widget2ViewControllerV2.swift in Sources */,
 				454B7E4222884E9800CEAA0F /* WidgetSubscriptionsHandler.swift in Sources */,
 				454FC5F422A2CEFC00F8BBB0 /* WidgetTranslator.swift in Sources */,
+				456AFBD82307D9BD009B7105 /* Widget4ViewController.swift in Sources */,
 				45281AEA22848C7D002FD08B /* DashboardScrollView.swift in Sources */,
+				456AFBD62307D9BD009B7105 /* Widget4Model.swift in Sources */,
 				4548361C2278B6C20024FF11 /* DashboardPresenter.swift in Sources */,
 				457DA8F922A1493F001250AA /* Widget2DataFlowV2.swift in Sources */,
 				454836222278B92E0024FF11 /* WidgetFactory.swift in Sources */,
+				456A02F42307E400009B7105 /* Widget4TableCell.swift in Sources */,
 				4551B709229D6E9E00CEAB59 /* Widget2Model.swift in Sources */,
 				45F26A182285B5190097CFC6 /* Widget3DataFlow.swift in Sources */,
 				454B7E3E22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift in Sources */,
+				456A0A1423080FCA009B7105 /* Widget4DataStore.swift in Sources */,
 				4548361E2278B6CD0024FF11 /* DashboardDataFlow.swift in Sources */,
+				456AFBDC2307D9BD009B7105 /* Widget4Builder.swift in Sources */,
 				45CF8E6C228991B200D6CE9C /* WidgetTypesProvider.swift in Sources */,
 				45F26A192285B5190097CFC6 /* Widget3Builder.swift in Sources */,
 				45F26A222285B5190097CFC6 /* Widget1View.swift in Sources */,
 				4551B711229D6F1300CEAB59 /* Widget3Translator.swift in Sources */,
 				45F26A162285B5190097CFC6 /* Widget3Interactor.swift in Sources */,
 				45F26A212285B5190097CFC6 /* Widget1ViewController.swift in Sources */,
+				456AFBD92307D9BD009B7105 /* Widget4Presenter.swift in Sources */,
+				456AFBD72307D9BD009B7105 /* Widget4DataFlow.swift in Sources */,
 				45F26A1D2285B5190097CFC6 /* Widget2BuilderV1.swift in Sources */,
 				45F26A1E2285B5190097CFC6 /* Widget2ViewController.swift in Sources */,
 				45F26A2F2285BAD90097CFC6 /* Widget1CollectionCell.swift in Sources */,
 				45281ADE22848B50002FD08B /* DashboardView.swift in Sources */,
 				454836042278B4D50024FF11 /* AppDelegate.swift in Sources */,
+				456A02FA2307F2E0009B7105 /* Widget4ExpandCell.swift in Sources */,
 				45CF8E6822898A3400D6CE9C /* WidgetDataStore.swift in Sources */,
+				456A0A12230808C4009B7105 /* Widget4TableCellViewModel.swift in Sources */,
 				4551B707229D6E8D00CEAB59 /* Widget1Model.swift in Sources */,
 				45F26A242285B5190097CFC6 /* Widget1Builder.swift in Sources */,
 				4551B70D229D6F0200CEAB59 /* Widget1Translator.swift in Sources */,
 				45281ADC22848961002FD08B /* WidgetContainerViewController.swift in Sources */,
+				456A02F82307F0F9009B7105 /* Widget4TableView.swift in Sources */,
 				45CF8E662289792D00D6CE9C /* WidgetProvider.swift in Sources */,
 				45F26A282285B74F0097CFC6 /* Widget1CollectionView.swift in Sources */,
 				45F26A1A2285B5190097CFC6 /* Widget3View.swift in Sources */,
 				454836172278B6390024FF11 /* Widget.swift in Sources */,
 				454836202278B6DE0024FF11 /* DashboardBuilder.swift in Sources */,
+				456AFBDA2307D9BD009B7105 /* Widget4Translator.swift in Sources */,
 				45F26A2B2285B77F0097CFC6 /* Widget1CollectionDelegate.swift in Sources */,
 				451D710422A155FF00EB52CC /* Widget2BuilderV2.swift in Sources */,
 				45F26A262285B5190097CFC6 /* Widget1Interactor.swift in Sources */,
@@ -548,11 +622,13 @@
 				457DA8FC22A1493F001250AA /* Widget2PresenterV2.swift in Sources */,
 				4548361A2278B6B80024FF11 /* DashboardInteractor.swift in Sources */,
 				45F26A232285B5190097CFC6 /* Widget1Presenter.swift in Sources */,
+				456A0A1023080796009B7105 /* Widget4TableViewDelegate.swift in Sources */,
 				45F26A2D2285B7890097CFC6 /* Widget1ColletctionDataSource.swift in Sources */,
 				454FC5F822A30CCA00F8BBB0 /* Widget2Builder.swift in Sources */,
 				457DA8FB22A1493F001250AA /* Widget2ViewV2.swift in Sources */,
 				4551B713229D6FC200CEAB59 /* WidgetContaierTranslator.swift in Sources */,
 				45281ADA2284772D002FD08B /* WidgetContainerView.swift in Sources */,
+				456AFBDB2307D9BD009B7105 /* Widget4Interactor.swift in Sources */,
 				45F26A312285C5C40097CFC6 /* Widget1CollectionViewFlowLayout.swift in Sources */,
 				45F26A252285B5190097CFC6 /* Widget1DataFlow.swift in Sources */,
 			);
@@ -638,7 +714,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -693,7 +769,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

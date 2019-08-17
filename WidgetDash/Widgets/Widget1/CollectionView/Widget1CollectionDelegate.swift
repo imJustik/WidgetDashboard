@@ -8,7 +8,5 @@
 
 import UIKit
 
-class Widget1CollectionDelegate {
-
-}
+class Widget1CollectionDelegate {}
 

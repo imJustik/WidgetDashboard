@@ -3,13 +3,7 @@
 
 import Foundation
 
-class Widget3Model: Equatable {
-    static func == (lhs: Widget3Model, rhs: Widget3Model) -> Bool {
-        return lhs.uid == rhs.uid &&
-            lhs.button1Text == rhs.button1Text &&
-            lhs.button2Text == rhs.button2Text
-    }
-
+class Widget3Model {
     let uid: String
     let button1Text: String
     let button2Text: String

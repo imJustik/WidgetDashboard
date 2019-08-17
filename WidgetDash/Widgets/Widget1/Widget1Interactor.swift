@@ -11,7 +11,8 @@ class Widget1Interactor {
     }
 
     func fetchData(request: Widget1Flow.FetchData.Request) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+        let rand = Double.random(in: 1.1...4)
+        DispatchQueue.main.asyncAfter(deadline: .now() + rand) { [weak self] in
             let response = Widget1Flow.FetchData.Response(result: "Widget1")
             self?.presenter.presentData(response: response)
         }

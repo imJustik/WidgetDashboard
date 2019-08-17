@@ -1,25 +1,32 @@
 
 import UIKit
 
-final class Widget4ExpandView: UIView {
+final class Widget4ExpandCell: UITableViewCell {
     let appearance = Appearance(); struct Appearance {
         let insets = 10
     }
 
-    lazy var titleLabel: UILabel = UILabel()
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        return label
+    }()
     
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = UIColor.lightGray
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
         makeConstraints()
-        titleLabel.text = "Развернуть"
-        titleLabel.textAlignment = .center
+        selectionStyle = .none
     }
 
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+
+    func configure(text: String) {
+        titleLabel.text = text
     }
 
     func addSubviews() {

@@ -2,7 +2,7 @@
 //  Copyright © 2019 Илья Кузнецов. All rights reserved.
 
 import Foundation
-
+// .v1(model)
 class Widget2Builder {
     var widgetModel: Widget2Versions?
 

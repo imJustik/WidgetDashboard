@@ -98,6 +98,7 @@ extension Dashboard: Widget2ActionDelegate {}
 extension Dashboard: Widget1ActionDelegate {
 
     func cellWasTapped(index: Int) {
+        print(index)
         let alert = UIAlertController(
             title: "Нажали на Петю \(index)",
             message: nil,
@@ -111,6 +112,11 @@ extension Dashboard: Widget1ActionDelegate {
 }
 
 extension Dashboard: WidgetContainerDelegate {
+    func layout() {
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+    }
+
     func navigate(to route: String) {
         let alert = UIAlertController(
             title: "Переходим на \(route)",
@@ -121,5 +127,12 @@ extension Dashboard: WidgetContainerDelegate {
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension Dashboard: Widget4ActionDelegate {
+    func layout2() {
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
     }
 }

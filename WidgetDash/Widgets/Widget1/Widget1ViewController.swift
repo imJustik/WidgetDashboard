@@ -94,6 +94,10 @@ extension Widget1ViewController: Widget1Delegate {
     func cellWasTapped(index: Int) {
         (externalDelegate as? Widget1ActionDelegate)?.cellWasTapped(index: index)
     }
+
+    func layout() {
+        (externalDelegate as? Widget1ActionDelegate)?.layout()
+    }
 }
 
 extension Widget1ViewController: Reloadable {
@@ -104,6 +108,7 @@ extension Widget1ViewController: Reloadable {
 
 protocol Widget1ActionDelegate: WidgetActionDelegate {
     func cellWasTapped(index: Int)
+    func layout()
 }
 
 
