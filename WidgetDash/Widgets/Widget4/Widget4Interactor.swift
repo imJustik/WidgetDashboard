@@ -12,19 +12,19 @@ class Widget4Interactor {
         self.dataStore = dataStore
     }
 
-    func getFirstThree(request: Widget4Flow.FetchData.Request) {
-        if dataStore.labels.isEmpty {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
-                guard let self = self else { return }
-                self.dataStore.labels = ["Текст1", "Текст2", "Текст3", "Текст4","Текст5", "Текст6"]
-                let response = Widget4Flow.FetchData.Response(result: Array(self.dataStore.labels.prefix(3)))
-                self.presenter.presentFirstThree(response: response)
-            }
-        } else {
-            let response = Widget4Flow.FetchData.Response(result: Array(self.dataStore.labels.prefix(3)))
-            self.presenter.presentFirstThree(response: response)
-        }
-    }
+//    func getFirstThree(request: Widget4Flow.FetchData.Request) {
+//        if dataStore.labels.isEmpty {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+//                guard let self = self else { return }
+//                self.dataStore.labels = ["Текст1", "Текст2", "Текст3", "Текст4","Текст5", "Текст6"]
+//                let response = Widget4Flow.FetchData.Response(result: Array(self.dataStore.labels.prefix(3)))
+//                self.presenter.presentFirstThree(response: response)
+//            }
+//        } else {
+//            let response = Widget4Flow.FetchData.Response(result: Array(self.dataStore.labels.prefix(3)))
+//            self.presenter.presentFirstThree(response: response)
+//        }
+//    }
 
     func getAll(request: Widget4Flow.FetchData.Request) {
         if dataStore.labels.isEmpty {

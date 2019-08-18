@@ -17,11 +17,9 @@ class Widget4ViewController: WidgetViewController {
             switch (oldState, state) {
             case (_, .loading):
                 contentView?.show(state: .loading)
-                getFirstThree()
-            case let (_, .displayFirstThree(data)):
-                contentView?.show(state: .displayFirstThree(data))
+                getAllData()
             case let(_, .displayAll(data)):
-                contentView?.show(state: .displayFirstThree(data))
+                contentView?.show(state: .displayAll(data))
         }
         }
     }
@@ -72,9 +70,9 @@ class Widget4ViewController: WidgetViewController {
         self.state = state
     }
 
-    func getFirstThree() {
+    func getAllData() {
         let request = Widget4Flow.FetchData.Request()
-        interactor.getFirstThree(request: request)
+        interactor.getAll(request: request)
     }
 
     func display(viewModel: Widget4Flow.FetchData.ViewModel) {
@@ -85,7 +83,6 @@ class Widget4ViewController: WidgetViewController {
 extension Widget4ViewController {
     enum State {
         case loading
-        case displayFirstThree([Widget4CellViewModel])
         case displayAll([Widget4CellViewModel])
     }
 }
@@ -108,10 +105,8 @@ extension Widget4ViewController: Widget4TableDelegate {
     func showAll() {
         let request = Widget4Flow.FetchData.Request()
         switch self.state {
-        case .displayFirstThree:
-            interactor.getAll(request: request)
         case .displayAll:
-            interactor.getFirstThree(request: request)
+            interactor.getAll(request: request)
         default:
             break
         }

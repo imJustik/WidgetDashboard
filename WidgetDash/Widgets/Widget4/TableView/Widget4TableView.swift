@@ -3,7 +3,7 @@ import UIKit
 
 class Widget4TableView: UITableView {
     let appearance = Appearance(); struct Appearance {
-        let backgroundColor: UIColor = .red
+        let backgroundColor: UIColor = .white
     }
 
     init() {

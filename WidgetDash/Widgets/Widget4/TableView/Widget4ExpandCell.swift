@@ -40,20 +40,4 @@ final class Widget4ExpandCell: UITableViewCell {
         }
 }
 
-//extension AccountsWidgetExpandButtonView: ViewModelConfigurable {
-//    typealias ViewModel = AccountWidgetCellViewModel.ExpandType
-//
-//    func configure(with viewModel: ViewModel) {
-//        switch viewModel {
-//        case let .shown(title):
-//            titleLabel.text = title
-//            countLabel.text = nil
-//            arrowIcon.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-//        case let .hidden(title, itemsCount):
-//            titleLabel.text = title
-//            countLabel.text = String(itemsCount)
-//            arrowIcon.transform = CGAffineTransform(rotationAngle: CGFloat(0))
-//        }
-//    }
-//}
 }

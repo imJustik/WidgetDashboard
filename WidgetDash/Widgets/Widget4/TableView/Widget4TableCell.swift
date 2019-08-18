@@ -7,6 +7,7 @@ class Widget4TableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
         makeConstraints()
+        backgroundColor = .yellow
     }
 
     required init?(coder _: NSCoder) {

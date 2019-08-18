@@ -132,7 +132,9 @@ extension Dashboard: WidgetContainerDelegate {
 
 extension Dashboard: Widget4ActionDelegate {
     func layout2() {
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
+
+          self.view.layoutIfNeeded()
+//        self.view.setNeedsLayout()
+//        self.view.layoutIfNeeded()
     }
 }

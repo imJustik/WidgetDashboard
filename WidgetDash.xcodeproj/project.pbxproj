@@ -41,6 +41,7 @@
 		456A0A1023080796009B7105 /* Widget4TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A0A0F23080796009B7105 /* Widget4TableViewDelegate.swift */; };
 		456A0A12230808C4009B7105 /* Widget4TableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A0A11230808C4009B7105 /* Widget4TableCellViewModel.swift */; };
 		456A0A1423080FCA009B7105 /* Widget4DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A0A1323080FCA009B7105 /* Widget4DataStore.swift */; };
+		456A113B23093D0D009B7105 /* Widget4ExpandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456A113A23093D0D009B7105 /* Widget4ExpandView.swift */; };
 		456AFBD62307D9BD009B7105 /* Widget4Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBCE2307D9BD009B7105 /* Widget4Model.swift */; };
 		456AFBD72307D9BD009B7105 /* Widget4DataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBCF2307D9BD009B7105 /* Widget4DataFlow.swift */; };
 		456AFBD82307D9BD009B7105 /* Widget4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456AFBD02307D9BD009B7105 /* Widget4ViewController.swift */; };
@@ -133,6 +134,7 @@
 		456A0A0F23080796009B7105 /* Widget4TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4TableViewDelegate.swift; sourceTree = "<group>"; };
 		456A0A11230808C4009B7105 /* Widget4TableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4TableCellViewModel.swift; sourceTree = "<group>"; };
 		456A0A1323080FCA009B7105 /* Widget4DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4DataStore.swift; sourceTree = "<group>"; };
+		456A113A23093D0D009B7105 /* Widget4ExpandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget4ExpandView.swift; sourceTree = "<group>"; };
 		456AFBCE2307D9BD009B7105 /* Widget4Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget4Model.swift; sourceTree = "<group>"; };
 		456AFBCF2307D9BD009B7105 /* Widget4DataFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget4DataFlow.swift; sourceTree = "<group>"; };
 		456AFBD02307D9BD009B7105 /* Widget4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Widget4ViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				456A02F92307F2E0009B7105 /* Widget4ExpandCell.swift */,
 				456A0A0F23080796009B7105 /* Widget4TableViewDelegate.swift */,
 				456A0A11230808C4009B7105 /* Widget4TableCellViewModel.swift */,
+				456A113A23093D0D009B7105 /* Widget4ExpandView.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				456A02F42307E400009B7105 /* Widget4TableCell.swift in Sources */,
 				4551B709229D6E9E00CEAB59 /* Widget2Model.swift in Sources */,
 				45F26A182285B5190097CFC6 /* Widget3DataFlow.swift in Sources */,
+				456A113B23093D0D009B7105 /* Widget4ExpandView.swift in Sources */,
 				454B7E3E22884DA200CEAA0F /* WidgetIncomingEventNotifier.swift in Sources */,
 				456A0A1423080FCA009B7105 /* Widget4DataStore.swift in Sources */,
 				4548361E2278B6CD0024FF11 /* DashboardDataFlow.swift in Sources */,
